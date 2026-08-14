@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Fichier de référence non corrigé, jamais compilé ni importé.
+    "shader-source.tsx",
   ]),
 ]);
 
