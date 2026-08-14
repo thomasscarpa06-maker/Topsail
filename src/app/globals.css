@@ -124,12 +124,15 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
-/* ---------- HERO ---------- */
+/* ---------- HERO (fond sombre) ---------- */
 .hero {
   padding: clamp(56px, 11vw, 110px) 0 clamp(40px, 7vw, 72px);
   position: relative;
   overflow: hidden;
+  background: var(--encre);
+  color: var(--chaux);
 }
+/* Superposition : le contenu (z-index 2) reste au-dessus du canvas (z-index 1). */
 .hero .wrap {
   position: relative;
   z-index: 2;
@@ -158,10 +161,11 @@ button:focus-visible {
 }
 .hero h1 {
   max-width: 14ch;
+  color: var(--chaux);
 }
 .hero h1 em {
   font-style: normal;
-  color: var(--olive);
+  color: var(--olive-clair);
   position: relative;
   white-space: nowrap;
 }
@@ -179,7 +183,9 @@ button:focus-visible {
   margin-top: 26px;
   max-width: 46ch;
   font-size: clamp(1.06rem, 2.4vw, 1.28rem);
-  color: var(--encre-doux);
+  color: rgba(237, 234, 227, 0.82);
+  /* Léger halo d'encre pour rester lisible au-dessus des filaments. */
+  text-shadow: 0 1px 12px rgba(21, 33, 28, 0.75);
 }
 .actions {
   display: flex;
@@ -188,19 +194,42 @@ button:focus-visible {
   margin-top: 34px;
 }
 
+/* Boutons du hero — inversés pour le fond sombre. */
+.hero .btn--plein {
+  background: var(--chaux);
+  color: var(--encre);
+  border-color: var(--chaux);
+}
+.hero .btn--plein:hover {
+  background: var(--olive-clair);
+  border-color: var(--olive-clair);
+  color: var(--encre);
+}
+.hero .btn--vide {
+  color: var(--chaux);
+  border-color: rgba(237, 234, 227, 0.5);
+  /* Fond translucide encre : le libellé reste lisible au-dessus des filaments. */
+  background: rgba(21, 33, 28, 0.42);
+}
+.hero .btn--vide:hover {
+  background: var(--chaux);
+  color: var(--encre);
+  border-color: var(--chaux);
+}
+
 /* ---------- CHIFFRES ---------- */
 .chiffres {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
-  background: var(--trait);
-  border: 1px solid var(--trait);
+  background: rgba(237, 234, 227, 0.16);
+  border: 1px solid rgba(237, 234, 227, 0.16);
   border-radius: 14px;
   overflow: hidden;
   margin-top: 46px;
 }
 .chiffre {
-  background: var(--chaux);
+  background: var(--encre);
   padding: 20px 16px;
 }
 .chiffre b {
@@ -208,13 +237,14 @@ button:focus-visible {
   font-family: var(--display);
   font-size: clamp(1.5rem, 4.6vw, 2.1rem);
   letter-spacing: -0.03em;
+  color: var(--chaux);
 }
 .chiffre span {
   font-family: var(--mono);
   font-size: 0.68rem;
   letter-spacing: 0.11em;
   text-transform: uppercase;
-  color: var(--encre-doux);
+  color: rgba(237, 234, 227, 0.6);
 }
 
 /* ---------- PASTILLE DE DISPONIBILITÉ ---------- */
@@ -223,11 +253,11 @@ button:focus-visible {
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
-  border: 1px solid var(--trait);
+  border: 1px solid rgba(237, 234, 227, 0.18);
   border-radius: 999px;
   padding: 8px 16px 8px 12px;
   margin-bottom: 30px;
-  background: rgba(251, 250, 247, 0.7);
+  background: rgba(237, 234, 227, 0.06);
   font-size: 0.86rem;
 }
 .pastille .point {
@@ -236,13 +266,14 @@ button:focus-visible {
   border-radius: 50%;
   background: var(--olive-clair);
   flex: none;
-  box-shadow: 0 0 0 4px rgba(62, 138, 102, 0.18);
+  box-shadow: 0 0 0 4px rgba(62, 138, 102, 0.24);
 }
 .pastille b {
   font-weight: 600;
+  color: var(--chaux);
 }
 .pastille span {
-  color: var(--encre-doux);
+  color: rgba(237, 234, 227, 0.72);
 }
 
 /* ---------- BANDE DE CAPTURES ---------- */
@@ -270,7 +301,7 @@ button:focus-visible {
   height: 212px;
   border-radius: 14px;
   overflow: hidden;
-  border: 1px solid var(--trait);
+  border: 1px solid rgba(237, 234, 227, 0.16);
   background: linear-gradient(150deg, var(--chaux-2), var(--blanc));
   transition: transform 0.25s ease;
 }
@@ -286,7 +317,7 @@ button:focus-visible {
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--encre-doux);
+  color: rgba(237, 234, 227, 0.6);
   margin-top: 10px;
 }
 
