@@ -1,0 +1,304 @@
+@import "tailwindcss";
+
+/* ---------- TOKENS DE DESIGN (config Tailwind v4) ---------- */
+@theme {
+  --color-chaux: #edeae3;
+  --color-chaux-2: #e3dfd5;
+  --color-encre: #15211c;
+  --color-encre-doux: #4a5852;
+  --color-olive: #2e6b4f;
+  --color-olive-clair: #3e8a66;
+  --color-safran: #d98c1f;
+  --color-blanc: #fbfaf7;
+  --color-trait: rgba(21, 33, 28, 0.14);
+
+  --font-display: var(--ff-display), system-ui, sans-serif;
+  --font-texte: var(--ff-texte), system-ui, sans-serif;
+  --font-mono: var(--ff-mono), ui-monospace, monospace;
+}
+
+/* Alias courts + mesures, pour reprendre fidèlement le reference.html */
+:root {
+  --chaux: var(--color-chaux);
+  --chaux-2: var(--color-chaux-2);
+  --encre: var(--color-encre);
+  --encre-doux: var(--color-encre-doux);
+  --olive: var(--color-olive);
+  --olive-clair: var(--color-olive-clair);
+  --safran: var(--color-safran);
+  --blanc: var(--color-blanc);
+  --trait: var(--color-trait);
+
+  --display: var(--font-display);
+  --texte: var(--font-texte);
+  --mono: var(--font-mono);
+
+  --marge: clamp(20px, 5vw, 64px);
+  --max: 1180px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--chaux);
+  color: var(--encre);
+  font-family: var(--texte);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--marge);
+}
+
+h1 {
+  font-family: var(--display);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  margin: 0;
+  font-size: clamp(2.6rem, 9vw, 5.4rem);
+}
+
+p {
+  margin: 0;
+}
+
+/* ---------- BOUTONS ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--texte);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 15px 26px;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1.5px solid var(--encre);
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
+}
+.btn--plein {
+  background: var(--encre);
+  color: var(--blanc);
+}
+.btn--plein:hover {
+  background: var(--olive);
+  border-color: var(--olive);
+  transform: translateY(-2px);
+}
+.btn--vide:hover {
+  background: var(--encre);
+  color: var(--blanc);
+  transform: translateY(-2px);
+}
+.btn:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--safran);
+  outline-offset: 3px;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  padding: clamp(56px, 11vw, 110px) 0 clamp(40px, 7vw, 72px);
+  position: relative;
+  overflow: hidden;
+}
+.hero .wrap {
+  position: relative;
+  z-index: 2;
+}
+#trace {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 22%,
+    #000 70%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 22%,
+    #000 70%,
+    transparent
+  );
+}
+.hero h1 {
+  max-width: 14ch;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--olive);
+  position: relative;
+  white-space: nowrap;
+}
+.hero h1 em::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.06em;
+  height: 0.11em;
+  background: var(--safran);
+  z-index: -1;
+}
+.hero .accroche {
+  margin-top: 26px;
+  max-width: 46ch;
+  font-size: clamp(1.06rem, 2.4vw, 1.28rem);
+  color: var(--encre-doux);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+/* ---------- CHIFFRES ---------- */
+.chiffres {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--trait);
+  border: 1px solid var(--trait);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-top: 46px;
+}
+.chiffre {
+  background: var(--chaux);
+  padding: 20px 16px;
+}
+.chiffre b {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 4.6vw, 2.1rem);
+  letter-spacing: -0.03em;
+}
+.chiffre span {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--encre-doux);
+}
+
+/* ---------- PASTILLE DE DISPONIBILITÉ ---------- */
+.pastille {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  border: 1px solid var(--trait);
+  border-radius: 999px;
+  padding: 8px 16px 8px 12px;
+  margin-bottom: 30px;
+  background: rgba(251, 250, 247, 0.7);
+  font-size: 0.86rem;
+}
+.pastille .point {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--olive-clair);
+  flex: none;
+  box-shadow: 0 0 0 4px rgba(62, 138, 102, 0.18);
+}
+.pastille b {
+  font-weight: 600;
+}
+.pastille span {
+  color: var(--encre-doux);
+}
+
+/* ---------- BANDE DE CAPTURES ---------- */
+.vitrine {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  margin: 44px calc(-1 * var(--marge)) 0;
+  padding: 4px var(--marge) 18px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.vitrine::-webkit-scrollbar {
+  display: none;
+}
+.vitrine figure {
+  margin: 0;
+  flex: none;
+  width: 170px;
+  scroll-snap-align: start;
+}
+.vitrine .cadre {
+  position: relative;
+  height: 212px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--trait);
+  background: linear-gradient(150deg, var(--chaux-2), var(--blanc));
+  transition: transform 0.25s ease;
+}
+.vitrine figure:hover .cadre {
+  transform: translateY(-4px);
+}
+.vitrine .cadre img {
+  object-fit: cover;
+  object-position: top center;
+}
+.vitrine figcaption {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--encre-doux);
+  margin-top: 10px;
+}
+
+/* ---------- MOUVEMENT RÉDUIT ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
