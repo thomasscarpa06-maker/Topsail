@@ -44,7 +44,13 @@ export default function RootLayout({
       lang="fr"
       className={`${display.variable} ${texte.variable} ${mono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <noscript>
+          {/* Sans JavaScript, pas d'apparition au défilement : tout est visible. */}
+          <style>{`.apparait{opacity:1 !important;transform:none !important}`}</style>
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }
