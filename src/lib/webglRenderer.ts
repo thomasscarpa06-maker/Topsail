@@ -75,13 +75,15 @@ void main(void) {
     vec2 p=uv;
     float d=length(p);
     vec3 tint=mix(OLIVE,SAFRAN,.5+.5*sin(i*.7+T*.2));
-    col+=.0009/d*tint;
+    col+=.0026/d*tint;
     float b=noise(i+p+bg*1.731);
-    col+=.0013*b/length(max(p,vec2(b*p.x*.02,p.y)))*mix(OLIVE,SAFRAN,b);
+    col+=.0026*b/length(max(p,vec2(b*p.x*.02,p.y)))*mix(OLIVE,SAFRAN,b);
+    // Fumée : les nuages fbm, teintés dans la palette (olive sombre) au lieu
+    // de l'orange d'origine. Même structure que le shader source (mix par d).
+    col=mix(col,vec3(bg*.05,bg*.15,bg*.11),d);
   }
-  vec3 base=mix(ENCRE,ENCRE*1.55,clamp(bg*.12,0.,1.));
-  col+=base;
-  col=mix(col,ENCRE,smoothstep(.45,1.25,length(uv)));
+  // Sol encre : jamais de noir pur, jamais de dégradé orange.
+  col+=ENCRE;
   O=vec4(col,1);
 }`;
 
