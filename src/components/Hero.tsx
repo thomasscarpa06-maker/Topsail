@@ -28,6 +28,7 @@ export default function Hero() {
   return (
     <section className="hero">
       <HeroCanvasMount />
+      <div className="hero-voile" aria-hidden="true" />
       <div className="wrap">
         <p className="pastille">
           <span className="point" aria-hidden="true" />
