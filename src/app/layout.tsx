@@ -46,8 +46,13 @@ export default function RootLayout({
     >
       <body>
         <noscript>
-          {/* Sans JavaScript, pas d'apparition au défilement : tout est visible. */}
-          <style>{`.apparait{opacity:1 !important;transform:none !important}`}</style>
+          {/* Sans JavaScript : contenu visible d'emblée, et en-tête plein
+              (lisible au-dessus de toutes les sections). */}
+          <style>{`.apparait{opacity:1 !important;transform:none !important}
+header{background:rgba(237,234,227,.9) !important;backdrop-filter:blur(10px);border-bottom-color:var(--trait) !important}
+header .marque{color:var(--encre) !important}
+header .marque span{color:var(--encre-doux) !important}
+header .btn--plein{background:var(--encre) !important;color:var(--blanc) !important;border-color:var(--encre) !important}`}</style>
         </noscript>
         {children}
       </body>
