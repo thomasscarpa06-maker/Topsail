@@ -33,7 +33,7 @@ export default function Hero() {
         <p className="pastille">
           <span className="point" aria-hidden="true" />
           <b>{DISPONIBILITE.capacite}</b>
-          <span>{DISPONIBILITE.creneau}</span>
+          <span className="pastille-creneau">{DISPONIBILITE.creneau}</span>
         </p>
 
         <h1>
