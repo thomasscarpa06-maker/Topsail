@@ -548,3 +548,43 @@ section {
     transform: none;
   }
 }
+
+/* ---------- AJUSTEMENTS MOBILE (< 768 px, desktop intouché) ---------- */
+@media (max-width: 768px) {
+  /* Pastille plus compacte, sur une seule ligne. */
+  .pastille {
+    padding: 5px 13px 5px 9px;
+    font-size: 0.72rem;
+    gap: 7px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+  /* Libellés des chiffres : plus petits et resserrés pour tenir sur une ligne. */
+  .chiffre {
+    padding: 18px 10px;
+  }
+  .chiffre span {
+    font-size: 0.58rem;
+    letter-spacing: 0.03em;
+  }
+  /* La valeur reste d'un seul tenant (ex. « 1 200 € » ne se coupe pas). */
+  .chiffre b {
+    white-space: nowrap;
+  }
+}
+
+/* Sous 380 px : on masque le segment après le point médian de la pastille
+   pour garder une seule ligne sans déborder. */
+@media (max-width: 380px) {
+  .pastille-creneau {
+    display: none;
+  }
+  .chiffre {
+    padding: 16px 7px;
+  }
+  .chiffre span {
+    font-size: 0.53rem;
+    letter-spacing: 0;
+  }
+}
