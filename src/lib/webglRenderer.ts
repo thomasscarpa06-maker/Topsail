@@ -8,8 +8,8 @@
 //    n'utilise que les uniforms `resolution` et `time`) ;
 //  - devicePixelRatio plafonné à 1 (voir createShaderBg).
 //
-// Le fragment shader est recoloré : filaments safran (#D98C1F) et olive
-// (#3E8A66) sur fond encre (#15211C). Ni noir, ni dégradé orange.
+// Le fragment shader est recoloré : filaments safran (#D98C1F) et bleu ardoise
+// (#2E7A9E) sur fond encre (#0E1A2B). Ni noir, ni dégradé orange.
 
 import type { HeroBg } from "./heroBg";
 
@@ -29,9 +29,9 @@ uniform float time;
 #define T time
 #define R resolution
 #define MN min(R.x,R.y)
-const vec3 ENCRE = vec3(0.082, 0.129, 0.110);
+const vec3 ENCRE = vec3(0.055, 0.102, 0.169);
 const vec3 SAFRAN = vec3(0.851, 0.549, 0.122);
-const vec3 OLIVE = vec3(0.243, 0.541, 0.400);
+const vec3 ARDOISE = vec3(0.180, 0.478, 0.620);
 float rnd(vec2 p) {
   p=fract(p*vec2(12.9898,78.233));
   p+=dot(p,p+34.56);
@@ -74,13 +74,13 @@ void main(void) {
     uv+=.1*cos(i*vec2(.1+.01*i, .8)+i*i+T*.5+.1*uv.x);
     vec2 p=uv;
     float d=length(p);
-    vec3 tint=mix(OLIVE,SAFRAN,.5+.5*sin(i*.7+T*.2));
+    vec3 tint=mix(ARDOISE,SAFRAN,.5+.5*sin(i*.7+T*.2));
     col+=.0026/d*tint;
     float b=noise(i+p+bg*1.731);
-    col+=.0026*b/length(max(p,vec2(b*p.x*.02,p.y)))*mix(OLIVE,SAFRAN,b);
-    // Fumée : les nuages fbm, teintés dans la palette (olive sombre) au lieu
-    // de l'orange d'origine. Même structure que le shader source (mix par d).
-    col=mix(col,vec3(bg*.05,bg*.15,bg*.11),d);
+    col+=.0026*b/length(max(p,vec2(b*p.x*.02,p.y)))*mix(ARDOISE,SAFRAN,b);
+    // Fumée : les nuages fbm, teintés dans la palette (bleu ardoise sombre) au
+    // lieu de l'orange d'origine. Même structure que le shader source (mix par d).
+    col=mix(col,vec3(bg*.05,bg*.11,bg*.18),d);
   }
   // Sol encre : jamais de noir pur, jamais de dégradé orange.
   col+=ENCRE;
