@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { MARQUE, MARQUE_SOUS_TITRE } from "@/lib/constants";
+import { MARQUE } from "@/lib/constants";
+import Logo from "./Logo";
 
 /**
  * En-tête collant.
@@ -36,9 +37,8 @@ export default function Header() {
   return (
     <header ref={ref} className={solide ? "solide" : undefined}>
       <div className="wrap bar">
-        <a className="marque" href="#">
-          {MARQUE}
-          <span>{MARQUE_SOUS_TITRE}</span>
+        <a className="marque" href="#" aria-label={MARQUE}>
+          <Logo className="logo" />
         </a>
         <a className="btn btn--plein" href="#rdv">
           Réserver un appel
