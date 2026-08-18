@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Topsail — Votre présence en ligne, notre expertise.</title>
+  <desc id="desc">Logo Topsail avec voilier bleu, vague, nom de marque et slogan.</desc>
+  <rect width="1200" height="1200" fill="#ffffff"/>
+
+  <!-- Sails -->
+  <path d="M452 250 C585 297 700 370 747 457 C773 505 770 552 748 592 C711 583 677 583 635 598 C659 529 653 450 614 376 C575 301 516 267 452 250 Z" fill="#082b5c"/>
+  <path d="M542 322 C566 384 566 447 544 503 C526 548 501 579 468 603 C510 598 548 600 584 610 C613 545 618 472 599 409 C586 367 566 339 542 322 Z" fill="#1667e8"/>
+
+  <!-- Wave -->
+  <path d="M377 635 C452 590 520 598 584 619 C649 641 710 650 778 636 C812 629 843 615 874 593 C851 628 815 653 770 667 C705 687 641 679 579 659 C511 637 454 627 377 653 C355 661 335 669 316 678 C332 661 352 647 377 635 Z" fill="#1768e8"/>
+
+  <!-- Brand name -->
+  <text x="600" y="835" text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="190" font-weight="700" letter-spacing="-7"
+        fill="#062858">Topsail</text>
+
+  <!-- Tagline ornaments -->
+  <line x1="155" y1="925" x2="245" y2="925" stroke="#1768e8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="955" y1="925" x2="1045" y2="925" stroke="#1768e8" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Tagline -->
+  <text x="600" y="942" text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="42" font-weight="400" letter-spacing="0.3"
+        fill="#082b5c">Votre présence en ligne, notre expertise.</text>
+</svg>
