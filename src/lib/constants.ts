@@ -19,8 +19,5 @@ export const DISPONIBILITE = {
   creneau: "· un créneau libre en septembre",
 } as const;
 
-/**
- * Lien Calendly de l'appel de 20 min. À REMPLACER par le vrai lien du
- * propriétaire (format https://calendly.com/utilisateur/type-d-evenement).
- */
-export const CALENDLY_URL = "https://calendly.com/topsail-grasse/appel-20min";
+/** Lien Calendly réel de l'appel de 20 min. */
+export const CALENDLY_URL = "https://calendly.com/topsail-grasse/20min";
