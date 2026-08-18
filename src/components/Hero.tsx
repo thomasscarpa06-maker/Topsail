@@ -42,8 +42,9 @@ export default function Hero() {
 
         <p className="accroche">
           Cinq pages, impeccables sur téléphone, avec votre fiche Google à jour.
-          1 200 € tout compris — le prix est sur cette page, pas dans un devis
-          qui arrive trois semaines plus tard.
+          Maquette sous 48 h, site en ligne en 7 jours. 1 200 € tout compris —
+          le prix est sur cette page, pas dans un devis qui arrive trois
+          semaines plus tard.
         </p>
 
         <div className="actions">
@@ -56,6 +57,10 @@ export default function Hero() {
         </div>
 
         <div className="chiffres">
+          <div className="chiffre">
+            <b>48 h</b>
+            <span>Première maquette</span>
+          </div>
           <div className="chiffre">
             <b>7 jours</b>
             <span>Mise en ligne</span>

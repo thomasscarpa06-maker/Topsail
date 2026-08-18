@@ -21,3 +21,6 @@ export const DISPONIBILITE = {
 
 /** Lien Calendly réel de l'appel de 20 min. */
 export const CALENDLY_URL = "https://calendly.com/topsail-grasse/20min";
+
+/** Adresse de contact (reprise de reference.html). */
+export const EMAIL = "contact@topsail.fr";

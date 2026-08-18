@@ -8,9 +8,9 @@ const promesses = [
       "1 200 €, annoncés avant de commencer. Si le projet sort du cadre, je vous le dis au premier appel — pas au moment de payer.",
   },
   {
-    titre: "Sept jours, à partir de vos contenus",
+    titre: "Maquette en 48 h, en ligne en 7 jours",
     texte:
-      "Le compte à rebours démarre quand j'ai vos textes et vos photos. Vous savez donc exactement quand votre site sera en ligne.",
+      "Après notre appel, vous avez une maquette sous 48 h. Le décompte des sept jours jusqu'à la mise en ligne démarre, lui, à la réception de vos textes et vos photos — vous savez donc exactement quand votre site sera en ligne.",
   },
   {
     titre: "Pensé pour le téléphone d'abord",
@@ -34,7 +34,7 @@ function Coche() {
 
 export default function Promesses() {
   return (
-    <section>
+    <section id="promesses">
       <div className="wrap">
         <div className="section-tete apparait">
           <span className="eyebrow">Ce que je vous garantis</span>
