@@ -8,22 +8,23 @@ export default function Pourquoi() {
         <div className="pourquoi-grille">
           <div className="pourquoi-texte apparait">
             <span className="eyebrow">Pourquoi Topsail</span>
-            <h2>Je viens des matières premières, pas du marketing.</h2>
+            <h2>Un site, ce n&apos;est pas une plaquette. C&apos;est un outil.</h2>
             <p>
-              Je travaille à Grasse dans les matières premières et les huiles
-              essentielles : analyses, sourcing, développement. C&apos;est un
-              métier de précision, où l&apos;on ne raconte pas d&apos;histoires —
-              un produit est conforme ou il ne l&apos;est pas.
+              Je m&apos;appelle Thomas, je suis développeur web et je vis à
+              Grasse. Je construis des sites pour les commerces et les
+              indépendants d&apos;ici, un par un, à la main.
             </p>
             <p>
-              En parallèle, j&apos;ai construit FragranceFinder, un moteur de
-              recherche de 1 250 parfums en neuf langues. Seul, de la base de
-              données à la mise en ligne.
+              Ma référence, c&apos;est FragranceFinder : un moteur de recherche
+              de 1 250 parfums, en neuf langues, que j&apos;ai conçu et développé
+              seul — de la base de données au référencement. À côté de ça, un
+              site vitrine de cinq pages ne me fait pas peur.
             </p>
             <p>
-              Autour de moi, je voyais des commerces avec un site illisible sur
+              Autour de moi, je vois des commerces avec un site illisible sur
               téléphone, ou des devis à 6 000 € jamais signés. Topsail est né de
-              là : un site propre, un prix affiché, un délai tenu.
+              là : un site propre, un prix affiché, un délai tenu. Rien de plus,
+              mais rien de moins.
             </p>
           </div>
 
