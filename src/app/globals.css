@@ -514,6 +514,203 @@ section {
   fill: none;
 }
 
+/* ---------- PRIX (fond clair) ---------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.prix-cartes {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr;
+  margin-bottom: clamp(32px, 5vw, 52px);
+}
+@media (min-width: 900px) {
+  .prix-cartes {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+  }
+}
+.prix-carte {
+  background: var(--blanc);
+  border: 1px solid var(--trait);
+  border-radius: 18px;
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.prix-carte--phare {
+  border-color: var(--accent);
+  box-shadow: 0 12px 34px rgba(14, 26, 43, 0.12);
+}
+.prix-mention {
+  font-size: 0.82rem;
+  color: var(--encre-doux);
+  margin-bottom: 14px;
+}
+.prix-carte--phare .prix-mention {
+  background: var(--accent);
+  color: var(--blanc);
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+.prix-carte h3 {
+  font-size: 1.2rem;
+}
+.prix-montant {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(2rem, 4.2vw, 2.6rem);
+  letter-spacing: -0.03em;
+  margin: 8px 0 22px;
+}
+.prix-prefixe {
+  font-family: var(--texte);
+  font-weight: 400;
+  font-size: 0.95rem;
+  letter-spacing: 0;
+  color: var(--encre-doux);
+}
+.prix-carte .btn {
+  margin-top: auto;
+}
+/* Icônes oui / non */
+.prix-icone {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  fill: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+.prix-oui {
+  color: var(--accent);
+}
+.prix-non {
+  color: rgba(14, 26, 43, 0.35);
+}
+/* Tableau comparatif — desktop (≥ 900 px) */
+.prix-table-wrap {
+  display: none;
+}
+@media (min-width: 900px) {
+  .prix-table-wrap {
+    display: block;
+    overflow-x: auto;
+  }
+}
+.prix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.prix-table th,
+.prix-table td {
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--trait);
+  vertical-align: middle;
+}
+.prix-table thead th {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+.prix-table thead th.est-phare {
+  color: var(--accent);
+}
+.prix-table tbody th {
+  font-weight: 500;
+  color: var(--encre-doux);
+}
+.prix-table .est-phare {
+  background: rgba(31, 78, 107, 0.05);
+}
+.prix-table tbody tr:last-child th,
+.prix-table tbody tr:last-child td {
+  border-bottom: none;
+}
+/* Tableau comparatif — mobile (< 900 px) : trois blocs successifs */
+.prix-blocs {
+  display: grid;
+  gap: 16px;
+}
+@media (min-width: 900px) {
+  .prix-blocs {
+    display: none;
+  }
+}
+.prix-bloc {
+  background: var(--blanc);
+  border: 1px solid var(--trait);
+  border-radius: 16px;
+  padding: 22px 20px;
+}
+.prix-bloc--phare {
+  border-color: var(--accent);
+}
+.prix-bloc h4 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin: 0 0 14px;
+}
+.prix-bloc dl {
+  margin: 0;
+}
+.prix-bloc-ligne {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 16px;
+  align-items: baseline;
+  padding: 9px 0;
+  border-top: 1px solid var(--trait);
+}
+.prix-bloc-ligne:first-child {
+  border-top: none;
+}
+.prix-bloc dt {
+  color: var(--encre-doux);
+  font-size: 0.92rem;
+}
+.prix-bloc dd {
+  margin: 0;
+  text-align: right;
+  font-size: 0.92rem;
+}
+/* Mentions sous le tableau */
+.prix-notes {
+  margin-top: clamp(28px, 4vw, 40px);
+  display: grid;
+  gap: 12px;
+}
+.prix-notes p {
+  color: var(--encre-doux);
+  font-size: 0.95rem;
+  max-width: 68ch;
+}
+.prix-franc {
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--trait);
+  color: var(--encre-doux);
+  font-size: 0.95rem;
+  max-width: 68ch;
+}
+.prix-franc b {
+  color: var(--encre);
+}
+
 /* ---------- PRISE DE RENDEZ-VOUS ---------- */
 .rdv {
   background: var(--blanc);
