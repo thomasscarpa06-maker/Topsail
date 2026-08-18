@@ -15,9 +15,12 @@ export const MARQUE_SOUS_TITRE = "Sites web · Grasse";
  * Textes repris au mot près depuis reference.html.
  */
 export const DISPONIBILITE = {
-  capacite: "Deux sites par mois",
+  capacite: "Quatre sites par mois",
   creneau: "· un créneau libre en septembre",
 } as const;
 
 /** Lien Calendly réel de l'appel de 20 min. */
 export const CALENDLY_URL = "https://calendly.com/topsail-grasse/20min";
+
+/** Adresse de contact (reprise de reference.html). */
+export const EMAIL = "contact@topsail.fr";
