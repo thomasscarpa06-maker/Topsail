@@ -129,8 +129,19 @@ export default function RendezVous() {
               <li>Je regarde votre présence actuelle, site et fiche Google</li>
               <li>Je vous dis si c&apos;est jouable en 7 jours, et à quel prix</li>
             </ul>
+
+            <h3>Ce dont j&apos;ai besoin de vous</h3>
+            <ul className="rdv-liste">
+              <li>Vos horaires et vos coordonnées</li>
+              <li>Quelques photos, même prises au téléphone</li>
+              <li>Vos textes si vous en avez, sinon je les écris</li>
+            </ul>
+
             <p className="rdv-note">
               Par téléphone si vous préférez. Sans engagement.
+            </p>
+            <p className="rdv-note">
+              Si on avance, vous recevez une maquette sous 48 h.
             </p>
           </div>
 

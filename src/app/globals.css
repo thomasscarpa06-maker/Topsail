@@ -514,6 +514,59 @@ section {
   fill: none;
 }
 
+/* ---------- POURQUOI TOPSAIL (fond clair) ---------- */
+.pourquoi {
+  background: var(--blanc);
+}
+.pourquoi-grille {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 4vw, 44px);
+}
+.pourquoi-media {
+  order: -1; /* mobile : cadre au-dessus du texte */
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+}
+.pourquoi-texte p {
+  margin-top: 16px;
+  color: var(--encre-doux);
+  max-width: 60ch;
+}
+/* Cadre photo en attente : dimensions réservées (aspect-ratio) -> pas de CLS. */
+.pourquoi-cadre {
+  aspect-ratio: 4 / 5;
+  border-radius: 18px;
+  border: 1px solid var(--trait);
+  background: var(--chaux-2);
+  display: grid;
+  place-items: center;
+}
+.pourquoi-cadre-icone {
+  width: 46px;
+  height: 46px;
+  stroke: var(--encre-doux);
+  stroke-width: 1.5;
+  fill: none;
+  opacity: 0.4;
+}
+@media (min-width: 900px) {
+  .pourquoi-grille {
+    flex-direction: row;
+    align-items: start;
+  }
+  .pourquoi-texte {
+    flex: 1 1 auto;
+  }
+  .pourquoi-media {
+    order: 0;
+    flex: 0 0 42%;
+    max-width: 440px;
+    margin: 0;
+  }
+}
+
 /* ---------- PRIX (fond clair) ---------- */
 .sr-only {
   position: absolute;
@@ -710,6 +763,33 @@ section {
 .prix-franc b {
   color: var(--encre);
 }
+/* Bande sur mesure — pleine largeur, fond légèrement contrasté. */
+.prix-surmesure {
+  margin-top: clamp(28px, 4vw, 44px);
+  background: var(--chaux-2);
+  border: 1px solid var(--trait);
+  border-radius: 18px;
+  padding: clamp(24px, 3vw, 34px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 28px;
+  align-items: center;
+  justify-content: space-between;
+}
+.prix-surmesure > div {
+  max-width: 62ch;
+}
+.prix-surmesure h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+.prix-surmesure p {
+  color: var(--encre-doux);
+  font-size: 0.97rem;
+}
+.prix-surmesure .btn {
+  flex: none;
+}
 
 /* ---------- PRISE DE RENDEZ-VOUS ---------- */
 .rdv {
@@ -731,6 +811,9 @@ section {
 .rdv-reassurance h3 {
   font-size: 1.25rem;
   margin-bottom: 20px;
+}
+.rdv-reassurance ul + h3 {
+  margin-top: 30px;
 }
 .rdv-liste {
   list-style: none;
@@ -762,6 +845,9 @@ section {
   font-size: 0.72rem;
   letter-spacing: 0.04em;
   color: var(--encre-doux);
+}
+.rdv-note + .rdv-note {
+  margin-top: 6px;
 }
 .rdv-boite {
   position: relative;

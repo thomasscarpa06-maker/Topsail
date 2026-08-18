@@ -51,8 +51,8 @@ export default function Hero() {
           <a className="btn btn--plein" href="#rdv">
             Réserver un appel de 20 min
           </a>
-          <a className="btn btn--vide" href="#deroule">
-            Voir le déroulé jour par jour
+          <a className="btn btn--vide" href="#prix">
+            Découvrir les formules
           </a>
         </div>
 

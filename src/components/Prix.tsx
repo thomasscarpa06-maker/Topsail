@@ -5,7 +5,7 @@
 const formules = [
   {
     nom: "Lancement",
-    mention: "3 places, jusqu'au 30 septembre",
+    mention: "5 places, jusqu'au 30 septembre",
     prix: "600 €",
     phare: false,
   },
@@ -27,17 +27,16 @@ const formules = [
 // Valeur par colonne (Lancement · Essentiel · Sur mesure).
 // true -> oui (coche), false -> non (tiret), chaîne -> texte.
 const lignes: { label: string; valeurs: (string | boolean)[] }[] = [
-  { label: "Pages", valeurs: ["5", "5", "10 et plus"] },
+  { label: "Pages", valeurs: ["3", "5", "10 et plus"] },
   { label: "Maquette", valeurs: ["48 h", "48 h", "5 jours"] },
   { label: "Mise en ligne", valeurs: ["7 jours", "7 jours", "3 semaines"] },
-  { label: "Rédaction des textes", valeurs: [true, true, true] },
-  { label: "Fiche Google Business", valeurs: [true, true, true] },
+  { label: "Rédaction des textes", valeurs: [false, true, true] },
+  { label: "Fiche Google Business", valeurs: [false, true, true] },
   { label: "Formulaire de contact", valeurs: [true, true, true] },
   { label: "Tours de modifications", valeurs: ["1", "1", "2"] },
   { label: "Prise en main", valeurs: ["30 min", "30 min", "1 h"] },
   { label: "Réservation en ligne", valeurs: [false, false, true] },
   { label: "Multilingue ou blog", valeurs: [false, false, true] },
-  { label: "Contrepartie", valeurs: ["Avis Google + captures", "—", "—"] },
 ];
 
 function Coche() {
@@ -163,6 +162,21 @@ export default function Prix() {
               </dl>
             </div>
           ))}
+        </div>
+
+        {/* Bande sur mesure — pleine largeur, fond légèrement contrasté. */}
+        <div className="prix-surmesure">
+          <div>
+            <h3>Un projet qui ne rentre dans aucune case ?</h3>
+            <p>
+              Boutique en ligne, réservation, plusieurs langues, refonte
+              d&apos;un site existant — décrivez-moi votre besoin, je vous dis si
+              je peux le faire et à quel prix.
+            </p>
+          </div>
+          <a className="btn btn--plein" href="#rdv">
+            Demande sur mesure
+          </a>
         </div>
 
         {/* Mentions sous le tableau */}

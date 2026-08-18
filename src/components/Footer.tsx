@@ -21,6 +21,9 @@ export default function Footer() {
             <h4>Aller à</h4>
             <ul>
               <li>
+                <a href="#pourquoi">Pourquoi Topsail</a>
+              </li>
+              <li>
                 <a href="#promesses">Les promesses</a>
               </li>
               <li>
