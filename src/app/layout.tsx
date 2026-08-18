@@ -32,6 +32,10 @@ export const metadata: Metadata = {
   title: "Topsail — Sites web à Grasse | En ligne en 7 jours, 1 200 €",
   description:
     "Site vitrine 5 pages pour les commerces et artisans de Grasse. En ligne en 7 jours, impeccable sur téléphone, fiche Google incluse. 1 200 € tout compris.",
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
 };
 
 export default function RootLayout({
@@ -49,7 +53,7 @@ export default function RootLayout({
           {/* Sans JavaScript : contenu visible d'emblée, et en-tête plein
               (lisible au-dessus de toutes les sections). */}
           <style>{`.apparait{opacity:1 !important;transform:none !important}
-header{background:rgba(237,234,227,.9) !important;backdrop-filter:blur(10px);border-bottom-color:var(--trait) !important}
+header{background:rgba(238,234,226,.9) !important;backdrop-filter:blur(10px);border-bottom-color:var(--trait) !important}
 header .marque{color:var(--encre) !important}
 header .marque span{color:var(--encre-doux) !important}
 header .btn--plein{background:var(--encre) !important;color:var(--blanc) !important;border-color:var(--encre) !important}`}</style>

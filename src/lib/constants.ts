@@ -18,3 +18,6 @@ export const DISPONIBILITE = {
   capacite: "Deux sites par mois",
   creneau: "· un créneau libre en septembre",
 } as const;
+
+/** Lien Calendly réel de l'appel de 20 min. */
+export const CALENDLY_URL = "https://calendly.com/topsail-grasse/20min";

@@ -12,7 +12,7 @@ const SEUIL_SHADER = "(min-width: 768px)";
  * Fond animé du hero. Composant client isolé, monté en dynamic(ssr:false)
  * par HeroCanvasMount.
  *
- * - ≥ 768 px + webgl2 disponible → shader WebGL (safran / olive sur encre)
+ * - ≥ 768 px + webgl2 disponible → shader WebGL (safran / bleu ardoise sur encre)
  * - sinon → canvas 2D (courbes gaussiennes recolorées)
  *
  * Garde-fous (BRIEF.md) : rAF coupé hors viewport via IntersectionObserver,

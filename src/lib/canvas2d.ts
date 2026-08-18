@@ -53,11 +53,11 @@ export function create2DBg(canvas: HTMLCanvasElement): HeroBg {
         else ctx.lineTo(px, y);
       }
       // Couleurs désaturées et très peu opaques : safran adouci pour la 2e
-      // ligne, olive éteint pour les autres.
+      // ligne, bleu ardoise éteint pour les autres.
       ctx.strokeStyle =
         i === 1
           ? `rgba(196,158,96,${0.2 - prof * 0.05})`
-          : `rgba(96,124,110,${0.16 - prof * 0.1})`;
+          : `rgba(88,120,150,${0.16 - prof * 0.1})`;
       ctx.lineWidth = i === 1 ? 1.5 : 1.2;
       ctx.stroke();
     }
