@@ -998,7 +998,7 @@ footer {
   max-width: 34ch;
   line-height: 1.55;
 }
-.footer-col h4 {
+.footer-col h3 {
   font-family: var(--mono);
   font-weight: 500;
   font-size: 0.72rem;
@@ -1044,6 +1044,143 @@ footer {
 }
 .footer-bas a:hover {
   color: var(--chaux);
+}
+
+/* ---------- DÉROULÉ J1 → J7 (section sombre) ---------- */
+.sombre {
+  background: var(--encre);
+  color: var(--chaux);
+}
+.sombre .eyebrow {
+  color: var(--safran);
+}
+.sombre .section-tete p {
+  color: rgba(238, 234, 226, 0.72);
+}
+/* Rail : défilement tactile sous 860 px. */
+.rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 78vw;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 4px var(--marge) 22px;
+  margin: 0 calc(-1 * var(--marge));
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.rail::-webkit-scrollbar {
+  display: none;
+}
+/* À partir de 860 px : frise continue de 7 colonnes. */
+@media (min-width: 860px) {
+  .rail {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-columns: auto;
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+    gap: 0;
+  }
+}
+.jour {
+  scroll-snap-align: start;
+  position: relative;
+  padding: 34px 20px 26px;
+  border-top: 1px solid rgba(238, 234, 226, 0.22);
+}
+@media (min-width: 860px) {
+  .jour {
+    padding: 34px 18px 8px;
+  }
+}
+.jour::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--safran);
+}
+.jour--fin::before {
+  width: 13px;
+  height: 13px;
+  top: -7px;
+  box-shadow: 0 0 0 5px rgba(217, 140, 31, 0.22);
+}
+.jour .num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--safran);
+  display: block;
+  margin-bottom: 12px;
+}
+.jour h3 {
+  color: var(--chaux);
+  margin-bottom: 8px;
+  font-size: 1.04rem;
+}
+.jour p {
+  color: rgba(238, 234, 226, 0.66);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.rail-note {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: rgba(238, 234, 226, 0.6);
+  margin-top: 26px;
+}
+
+/* ---------- QUESTIONS (fond clair) ---------- */
+.questions .wrap {
+  max-width: 840px;
+}
+details {
+  border-top: 1px solid var(--trait);
+  padding: 20px 0;
+}
+details:last-of-type {
+  border-bottom: 1px solid var(--trait);
+}
+summary {
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.06rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+summary::after {
+  content: "+";
+  font-family: var(--mono);
+  color: var(--safran);
+  font-size: 1.3rem;
+  flex: none;
+}
+details[open] summary::after {
+  content: "–";
+}
+details p {
+  margin-top: 12px;
+  color: var(--encre-doux);
+  max-width: 62ch;
+  font-size: 0.97rem;
+}
+.questions .actions {
+  margin-top: clamp(32px, 5vw, 44px);
 }
 
 /* ---------- APPARITION AU DÉFILEMENT ---------- */

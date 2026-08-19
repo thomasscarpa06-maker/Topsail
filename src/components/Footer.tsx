@@ -18,7 +18,7 @@ export default function Footer() {
           </div>
 
           <nav className="footer-col" aria-label="Aller à">
-            <h4>Aller à</h4>
+            <h3>Aller à</h3>
             <ul>
               <li>
                 <a href="#pourquoi">Pourquoi Topsail</a>
@@ -42,7 +42,7 @@ export default function Footer() {
           </nav>
 
           <div className="footer-col">
-            <h4>Me joindre</h4>
+            <h3>Me joindre</h3>
             <ul>
               <li>
                 <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
@@ -55,7 +55,7 @@ export default function Footer() {
           </div>
 
           <div className="footer-col">
-            <h4>Ce que je fais</h4>
+            <h3>Ce que je fais</h3>
             <ul>
               <li className="footer-plain">Sites vitrines</li>
               <li className="footer-plain">Fiches Google Business</li>
