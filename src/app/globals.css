@@ -404,28 +404,26 @@ header.solide .btn--plein {
 }
 
 /* ---------- BANDE DE CAPTURES ---------- */
+/* Deux cadres, plus grands : empilés sous 640 px, côte à côte au-delà. */
 .vitrine {
-  display: flex;
-  gap: 14px;
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  margin: 44px calc(-1 * var(--marge)) 0;
-  padding: 4px var(--marge) 18px;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 44px;
 }
-.vitrine::-webkit-scrollbar {
-  display: none;
+@media (min-width: 640px) {
+  .vitrine {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
 }
 .vitrine figure {
   margin: 0;
-  flex: none;
-  width: 170px;
-  scroll-snap-align: start;
 }
 .vitrine .cadre {
   position: relative;
-  height: 212px;
+  /* Dimensions réservées via aspect-ratio -> pas de décalage (CLS 0). */
+  aspect-ratio: 3 / 2;
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid rgba(238, 234, 226, 0.2);

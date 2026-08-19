@@ -2,24 +2,19 @@ import Image from "next/image";
 import { DISPONIBILITE } from "@/lib/constants";
 import HeroCanvasMount from "./HeroCanvasMount";
 
-// Captures — textes et fichiers repris de reference.html (dossier public/captures).
+// Captures — deux vraies images (dossier public/captures). Next sert du webp
+// à partir des PNG source.
 const captures = [
   {
-    src: "/captures/kepy.webp",
+    src: "/captures/DJKEPY.png",
     alt: "Site de l'artiste DJ Kepy",
     legende: "DJ Kepy · Artiste",
     priority: true,
   },
   {
-    src: "/captures/fragrancefinder.webp",
+    src: "/captures/fragancefinderfr.png",
     alt: "FragranceFinder, moteur de recherche de parfums",
     legende: "FragranceFinder · Projet perso",
-    priority: false,
-  },
-  {
-    src: "/captures/projet-3.webp",
-    alt: "",
-    legende: "Votre site · Septembre",
     priority: false,
   },
 ];
@@ -83,7 +78,7 @@ export default function Hero() {
                   src={c.src}
                   alt={c.alt}
                   fill
-                  sizes="170px"
+                  sizes="(min-width: 640px) 45vw, 90vw"
                   priority={c.priority}
                 />
               </div>
