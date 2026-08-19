@@ -24,3 +24,13 @@ export const CALENDLY_URL = "https://calendly.com/topsail-grasse/20min";
 
 /** Adresse de contact (reprise de reference.html). */
 export const EMAIL = "contact@topsail.fr";
+
+/**
+ * Scores PageSpeed Insights (mobile) affichés dans « Pourquoi Topsail ».
+ * Valeurs à confirmer / mettre à jour par le propriétaire.
+ */
+export const PERF_INDICATEURS = [
+  { label: "Performance", valeur: 88 },
+  { label: "Accessibilité", valeur: 96 },
+  { label: "SEO", valeur: 100 },
+] as const;

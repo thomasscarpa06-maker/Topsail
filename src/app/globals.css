@@ -533,21 +533,89 @@ section {
   max-width: 60ch;
 }
 /* Cadre photo en attente : dimensions réservées (aspect-ratio) -> pas de CLS. */
-.pourquoi-cadre {
-  aspect-ratio: 4 / 5;
-  border-radius: 18px;
+/* Bloc de démonstration technique : trois cadrans SVG. */
+.perf {
   border: 1px solid var(--trait);
-  background: var(--chaux-2);
-  display: grid;
-  place-items: center;
+  border-radius: 18px;
+  padding: clamp(22px, 3vw, 30px);
+  background: var(--chaux);
 }
-.pourquoi-cadre-icone {
-  width: 46px;
-  height: 46px;
-  stroke: var(--encre-doux);
-  stroke-width: 1.5;
+.perf-titre {
+  font-size: 1.12rem;
+  margin-bottom: 22px;
+}
+.cadrans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.cadran {
+  text-align: center;
+  min-width: 0;
+}
+.cadran-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.cadran-piste {
   fill: none;
-  opacity: 0.4;
+  stroke: var(--trait);
+  stroke-width: 9;
+}
+.cadran-arc {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 9;
+  stroke-linecap: round;
+  /* Défaut = arc rempli (sans JS et sous prefers-reduced-motion). */
+  stroke-dashoffset: var(--fin);
+}
+/* Remplissage animé une seule fois à l'apparition de la section. */
+.perf.vu .cadran-arc {
+  animation: cadran-fill 1.1s ease both;
+}
+.perf.vu .cadran:nth-child(2) .cadran-arc {
+  animation-delay: 0.12s;
+}
+.perf.vu .cadran:nth-child(3) .cadran-arc {
+  animation-delay: 0.24s;
+}
+@keyframes cadran-fill {
+  from {
+    stroke-dashoffset: var(--vide);
+  }
+  to {
+    stroke-dashoffset: var(--fin);
+  }
+}
+.cadran-valeur {
+  fill: var(--encre);
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 34px;
+  letter-spacing: -1px;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+.cadran-label {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--encre-doux);
+}
+.perf-legende {
+  margin-top: 22px;
+  font-size: 0.85rem;
+  color: var(--encre-doux);
+}
+.perf-note {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--encre-doux);
 }
 @media (min-width: 900px) {
   .pourquoi-grille {
