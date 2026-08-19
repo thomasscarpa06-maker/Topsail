@@ -42,7 +42,7 @@ export const MENTIONS = {
  * Valeurs à confirmer / mettre à jour par le propriétaire.
  */
 export const PERF_INDICATEURS = [
-  { label: "Performance", valeur: 88 },
+  { label: "Performance", valeur: 96 },
   { label: "Accessibilité", valeur: 96 },
   { label: "SEO", valeur: 100 },
 ] as const;
