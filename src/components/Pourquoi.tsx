@@ -1,6 +1,12 @@
+import type { CSSProperties } from "react";
+import { PERF_INDICATEURS } from "@/lib/constants";
+
 // Section « Pourquoi Topsail » — fond clair, entre le hero et les Promesses.
-// Texte à gauche, emplacement photo (cadre en attente, dimensions réservées)
-// à droite à partir de 900 px ; sous 900 px, le cadre passe au-dessus du texte.
+// Texte à gauche, bloc de démonstration technique (trois cadrans SVG) à droite
+// à partir de 900 px ; sous 900 px, le bloc passe au-dessus du texte.
+const RAYON = 52;
+const CIRC = 2 * Math.PI * RAYON; // circonférence de l'arc
+
 export default function Pourquoi() {
   return (
     <section className="pourquoi" id="pourquoi">
@@ -28,13 +34,62 @@ export default function Pourquoi() {
             </p>
           </div>
 
-          <div className="pourquoi-media" aria-hidden="true">
-            <div className="pourquoi-cadre">
-              <svg viewBox="0 0 24 24" className="pourquoi-cadre-icone">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <path d="M21 15l-5-5L5 21" />
-              </svg>
+          <div className="pourquoi-media">
+            <div className="perf apparait">
+              <h3 className="perf-titre">
+                Mesuré par Google, pas promis par moi.
+              </h3>
+              <div className="cadrans">
+                {PERF_INDICATEURS.map((ind) => {
+                  const fin = CIRC * (1 - ind.valeur / 100);
+                  return (
+                    <div className="cadran" key={ind.label}>
+                      <svg
+                        className="cadran-svg"
+                        viewBox="0 0 120 120"
+                        role="img"
+                        aria-label={`${ind.label} : ${ind.valeur} sur 100`}
+                      >
+                        <circle
+                          className="cadran-piste"
+                          cx="60"
+                          cy="60"
+                          r={RAYON}
+                        />
+                        <g transform="rotate(-90 60 60)">
+                          <circle
+                            className="cadran-arc"
+                            cx="60"
+                            cy="60"
+                            r={RAYON}
+                            style={
+                              {
+                                strokeDasharray: CIRC,
+                                "--vide": CIRC,
+                                "--fin": fin,
+                              } as CSSProperties
+                            }
+                          />
+                        </g>
+                        <text className="cadran-valeur" x="60" y="60">
+                          {ind.valeur}
+                        </text>
+                      </svg>
+                      <span className="cadran-label" aria-hidden="true">
+                        {ind.label}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+              <p className="perf-legende">
+                Google PageSpeed Insights, mobile — fragrancefinder.fr, le site
+                que j&apos;ai construit. Août 2026.
+              </p>
+              <p className="perf-note">
+                Zéro décalage de mise en page. Serveur qui répond en 0,5
+                seconde.
+              </p>
             </div>
           </div>
         </div>
