@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { MARQUE } from "@/lib/constants";
 import Logo from "./Logo";
 
@@ -37,12 +38,12 @@ export default function Header() {
   return (
     <header ref={ref} className={solide ? "solide" : undefined}>
       <div className="wrap bar">
-        <a className="marque" href="#" aria-label={MARQUE}>
+        <Link className="marque" href="/" aria-label={MARQUE}>
           <Logo className="logo" />
-        </a>
-        <a className="btn btn--plein" href="#rdv">
+        </Link>
+        <Link className="btn btn--plein" href="/#rdv">
           Réserver un appel
-        </a>
+        </Link>
       </div>
     </header>
   );

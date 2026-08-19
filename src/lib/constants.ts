@@ -22,8 +22,20 @@ export const DISPONIBILITE = {
 /** Lien Calendly réel de l'appel de 20 min. */
 export const CALENDLY_URL = "https://calendly.com/topsail-grasse/20min";
 
-/** Adresse de contact (reprise de reference.html). */
-export const EMAIL = "contact@topsail.fr";
+/** Adresse de contact. */
+export const EMAIL = "contact@topsail-grasse.fr";
+
+/** URL canonique du site. */
+export const SITE_URL = "https://www.topsail-grasse.fr";
+
+/**
+ * Mentions légales — valeurs à renseigner par le propriétaire.
+ */
+export const MENTIONS = {
+  nomComplet: "[Nom complet à renseigner]",
+  siren: "[SIREN à renseigner]",
+  adresse: "[Adresse à renseigner]",
+} as const;
 
 /**
  * Scores PageSpeed Insights (mobile) affichés dans « Pourquoi Topsail ».
