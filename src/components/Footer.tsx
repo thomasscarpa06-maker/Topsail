@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Logo from "./Logo";
 import { EMAIL } from "@/lib/constants";
 
@@ -21,22 +22,22 @@ export default function Footer() {
             <h3>Aller à</h3>
             <ul>
               <li>
-                <a href="#pourquoi">Pourquoi Topsail</a>
+                <Link href="/#pourquoi">Pourquoi Topsail</Link>
               </li>
               <li>
-                <a href="#promesses">Les promesses</a>
+                <Link href="/#promesses">Les promesses</Link>
               </li>
               <li>
-                <a href="#deroule">Le déroulé</a>
+                <Link href="/#deroule">Le déroulé</Link>
               </li>
               <li>
-                <a href="#prix">Le prix</a>
+                <Link href="/#prix">Le prix</Link>
               </li>
               <li>
-                <a href="#questions">Les questions</a>
+                <Link href="/#questions">Les questions</Link>
               </li>
               <li>
-                <a href="#rdv">Prendre rendez-vous</a>
+                <Link href="/#rdv">Prendre rendez-vous</Link>
               </li>
             </ul>
           </nav>
@@ -48,7 +49,7 @@ export default function Footer() {
                 <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
               </li>
               <li>
-                <a href="#rdv">Réserver un appel de 20 min</a>
+                <Link href="/#rdv">Réserver un appel de 20 min</Link>
               </li>
               <li className="footer-plain">Réponse sous 48 h</li>
             </ul>
@@ -68,7 +69,7 @@ export default function Footer() {
         <div className="footer-bas">
           <p>© 2026 Topsail — Grasse</p>
           <p>Auto-entrepreneur · TVA non applicable, art. 293 B du CGI</p>
-          <a href="/mentions-legales">Mentions légales</a>
+          <Link href="/mentions-legales">Mentions légales</Link>
         </div>
       </div>
     </footer>
