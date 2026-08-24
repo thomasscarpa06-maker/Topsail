@@ -5,7 +5,8 @@ import Promesses from "@/components/Promesses";
 import Deroule from "@/components/Deroule";
 import Prix from "@/components/Prix";
 import RendezVous from "@/components/RendezVous";
-import Questions from "@/components/Questions";
+import Zone from "@/components/Zone";
+import Questions, { questions } from "@/components/Questions";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import { SITE_URL, EMAIL } from "@/lib/constants";
@@ -19,14 +20,36 @@ const jsonLd = {
   url: SITE_URL,
   email: EMAIL,
   image: `${SITE_URL}/og.png`,
+  priceRange: "600 € - 2400 €",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Grasse",
     addressRegion: "Alpes-Maritimes",
     addressCountry: "FR",
   },
-  areaServed: ["Grasse", "Bassin cannois"],
+  areaServed: [
+    "Grasse",
+    "Cannes",
+    "Mouans-Sartoux",
+    "Mougins",
+    "Le Cannet",
+    "Valbonne",
+    "Pégomas",
+    "Peymeinade",
+  ],
   knowsAbout: "Création de sites web",
+};
+
+// FAQPage — reprend les six questions/réponses de la section Questions, seule
+// source de vérité, pour permettre l'affichage enrichi dans Google.
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: questions.map(({ q, r }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: r },
+  })),
 };
 
 export default function Home() {
@@ -36,6 +59,10 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+      />
       <Header />
       <main>
         <Hero />
@@ -44,6 +71,7 @@ export default function Home() {
         <Deroule />
         <Prix />
         <RendezVous />
+        <Zone />
         <Questions />
       </main>
       <Footer />

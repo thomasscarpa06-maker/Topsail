@@ -304,8 +304,14 @@ header.solide .btn--plein {
   background: var(--safran);
   z-index: -1;
 }
+.hero .hero-lieu {
+  margin-top: 14px;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  color: rgba(238, 234, 226, 0.72);
+}
 .hero .accroche {
-  margin-top: 26px;
+  margin-top: 18px;
   max-width: 46ch;
   font-size: clamp(1.06rem, 2.4vw, 1.28rem);
   color: rgba(238, 234, 226, 0.82);
@@ -1136,6 +1142,24 @@ footer {
   letter-spacing: 0.06em;
   color: rgba(238, 234, 226, 0.6);
   margin-top: 26px;
+}
+
+/* ---------- ZONE DESSERVIE (fond clair, SEO local) ---------- */
+.zone-texte {
+  display: grid;
+  gap: clamp(18px, 3.5vw, 40px);
+}
+.zone-texte p {
+  margin: 0;
+  color: var(--encre-doux);
+  max-width: 60ch;
+  font-size: 1.02rem;
+}
+@media (min-width: 760px) {
+  .zone-texte {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(28px, 4vw, 52px);
+  }
 }
 
 /* ---------- QUESTIONS (fond clair) ---------- */

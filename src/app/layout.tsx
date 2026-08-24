@@ -7,9 +7,10 @@ import {
 import { SITE_URL } from "@/lib/constants";
 import "./globals.css";
 
-const TITRE = "Topsail — Sites web à Grasse | En ligne en 7 jours, 1 200 €";
+const TITRE =
+  "Création de site internet à Grasse — 1 200 € tout compris | Topsail";
 const DESCRIPTION =
-  "Site vitrine 5 pages pour les commerces et artisans de Grasse. En ligne en 7 jours, impeccable sur téléphone, fiche Google incluse. 1 200 € tout compris.";
+  "Création de site internet à Grasse et dans le bassin cannois. Site vitrine 5 pages, maquette en 48 h, mise en ligne en 7 jours, 1 200 € tout compris. Fiche Google Business incluse.";
 
 // Bricolage Grotesque — titres (700 / 800). Police variable : plage complète.
 const display = Bricolage_Grotesque({
