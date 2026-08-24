@@ -35,6 +35,11 @@ export default function Hero() {
           Votre site en ligne en <em>7 jours</em>.
         </h1>
 
+        <p className="hero-lieu">
+          Création de site internet à Grasse, Cannes et dans les
+          Alpes-Maritimes.
+        </p>
+
         <p className="accroche">
           Cinq pages, impeccables sur téléphone, avec votre fiche Google à jour.
           Maquette sous 48 h, site en ligne en 7 jours. 1 200 € tout compris —

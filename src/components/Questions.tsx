@@ -1,6 +1,8 @@
 // Section « Questions » — fond clair. Les 6 <details> repris de reference.html ;
 // la réponse sur les délais est mise à jour pour les deux jalons.
-const questions = [
+// Exporté pour alimenter le JSON-LD FAQPage (page.tsx) à partir d'une seule
+// source de vérité.
+export const questions = [
   {
     q: "Je n'ai ni textes ni photos, c'est bloquant ?",
     r: "Non. J'écris les textes à partir de notre appel de vingt minutes, vous validez. Pour les photos, on utilise les vôtres même prises au téléphone si elles sont bonnes, sinon je vous oriente vers une solution simple.",
