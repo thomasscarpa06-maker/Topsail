@@ -8,8 +8,14 @@
 
 import type { HeroBg } from "./heroBg";
 
-const LIGNES = 7;
 const FLOU = 1.4; // léger flou (px) pour diffuser les courbes
+
+/** Options de complexité. Sur mobile (< 768 px) on allège : moins de courbes
+ *  et un pas d'échantillonnage plus grand, pour réduire le coût par image. */
+export type Options2D = {
+  lignes?: number;
+  pas?: number;
+};
 
 // Somme de gaussiennes larges et basses : des ondulations douces, pas des pics.
 function hauteur(x: number, i: number, temps: number) {
@@ -31,9 +37,14 @@ function hauteur(x: number, i: number, temps: number) {
   return y;
 }
 
-export function create2DBg(canvas: HTMLCanvasElement): HeroBg {
+export function create2DBg(
+  canvas: HTMLCanvasElement,
+  opts: Options2D = {},
+): HeroBg {
   const ctx = canvas.getContext("2d")!;
   const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+  const LIGNES = opts.lignes ?? 7;
+  const PAS = opts.pas ?? 6;
   let l = 0;
   let h = 0;
 
@@ -47,7 +58,7 @@ export function create2DBg(canvas: HTMLCanvasElement): HeroBg {
     for (let i = 0; i < LIGNES; i++) {
       const prof = i / (LIGNES - 1);
       ctx.beginPath();
-      for (let px = 0; px <= l; px += 6) {
+      for (let px = 0; px <= l; px += PAS) {
         const y = base - i * (h * 0.032) - hauteur(px / l, i, temps) * echelle;
         if (px === 0) ctx.moveTo(px, y);
         else ctx.lineTo(px, y);
