@@ -1,75 +1,46 @@
-import Link from "next/link";
-import Logo from "./Logo";
-import { EMAIL } from "@/lib/constants";
+import { site } from "@/config/site";
+import { Logo } from "./Logo";
+import { Todo } from "./Todo";
 
-// Pied de page — fond encre. Aucune dépendance ; aucune icône de réseau social
-// (pas de comptes). Quatre colonnes ≥ 900 px, empilées en dessous.
-export default function Footer() {
+export function Footer() {
   return (
-    <footer>
-      <div className="wrap">
-        <div className="footer-cols">
-          <div className="footer-col footer-marque">
-            <Logo className="footer-logo" />
-            <p>
-              Développeur web indépendant à Grasse. Sites vitrines pour
-              commerces, artisans et professions libérales du bassin grassois et
-              cannois.
-            </p>
-          </div>
-
-          <nav className="footer-col" aria-label="Aller à">
-            <h3>Aller à</h3>
-            <ul>
-              <li>
-                <Link href="/#pourquoi">Pourquoi Topsail</Link>
-              </li>
-              <li>
-                <Link href="/#promesses">Les promesses</Link>
-              </li>
-              <li>
-                <Link href="/#deroule">Le déroulé</Link>
-              </li>
-              <li>
-                <Link href="/#prix">Le prix</Link>
-              </li>
-              <li>
-                <Link href="/#questions">Les questions</Link>
-              </li>
-              <li>
-                <Link href="/#rdv">Prendre rendez-vous</Link>
-              </li>
-            </ul>
-          </nav>
-
-          <div className="footer-col">
-            <h3>Me joindre</h3>
-            <ul>
-              <li>
-                <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
-              </li>
-              <li>
-                <Link href="/#rdv">Réserver un appel de 20 min</Link>
-              </li>
-              <li className="footer-plain">Réponse sous 48 h</li>
-            </ul>
-          </div>
-
-          <div className="footer-col">
-            <h3>Ce que je fais</h3>
-            <ul>
-              <li className="footer-plain">Sites vitrines</li>
-              <li className="footer-plain">Fiches Google Business</li>
-              <li className="footer-plain">Refonte de sites anciens</li>
-              <li className="footer-plain">Maintenance</li>
-            </ul>
-          </div>
+    <footer className="border-t border-nuit/10 bg-sable">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
+        <div>
+          <Logo className="h-9 w-auto" />
+          <p className="mt-4 text-gris">Dépôt-vente à domicile dans le Pays de Grasse. On vend vos objets pour vous.</p>
         </div>
-
-        <div className="footer-bas">
-          <p>© 2026 Topsail — Grasse</p>
-          <p>Auto-entrepreneur · TVA non applicable, art. 293 B du CGI</p>
-          <Link href="/mentions-legales">Mentions légales</Link>
+        <div>
+          <p className="font-semibold text-nuit">Zone d&apos;intervention</p>
+          <p className="mt-3 text-gris">{site.communes.join(", ")}.</p>
+        </div>
+        <div>
+          <p className="font-semibold text-nuit">Contact</p>
+          <ul className="mt-3 space-y-2 text-gris">
+            <li>
+              <a href={`mailto:${site.email}`} className="text-ardoise underline-offset-4 hover:underline">
+                {site.email}
+              </a>
+            </li>
+            <li>
+              {site.phone ? (
+                <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="text-ardoise">
+                  {site.phone}
+                </a>
+              ) : (
+                <Todo label="téléphone" />
+              )}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="border-t border-nuit/10">
+        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-6 text-sm text-gris sm:flex-row sm:items-center sm:justify-between sm:px-6">
+          <p>© {new Date().getFullYear()} Topsail</p>
+          <nav aria-label="Liens légaux" className="flex gap-6">
+            <a href="/mentions-legales" className="hover:text-nuit">Mentions légales</a>
+            <a href="/confidentialite" className="hover:text-nuit">Confidentialité</a>
+          </nav>
         </div>
       </div>
     </footer>

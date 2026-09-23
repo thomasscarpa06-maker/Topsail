@@ -1,15 +1,11 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/constants";
+import { site } from "@/config/site";
 
-// Sitemap de la page unique. La page /mentions-legales est volontairement
-// exclue : elle est en noindex (voir son export metadata.robots).
 export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
   return [
-    {
-      url: `${SITE_URL}/`,
-      lastModified: new Date("2026-08-24"),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
+    { url: site.url, lastModified: now, changeFrequency: "monthly", priority: 1 },
+    { url: `${site.url}/mentions-legales`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
+    { url: `${site.url}/confidentialite`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
   ];
 }
