@@ -14,7 +14,7 @@ function Titre({ sur, titre, intro }: { sur: string; titre: string; intro?: Reac
 /* ───────────── Comment ça marche ───────────── */
 
 const etapes = [
-  { titre: "Vous nous contactez", texte: "Par le formulaire avec quelques photos, ou par téléphone. On vous répond rapidement." },
+  { titre: "Vous nous contactez", texte: "Par le formulaire avec quelques photos, ou par e-mail. On vous répond rapidement." },
   { titre: "On passe chez vous", texte: "On repère ce qui peut se vendre et on fixe ensemble un prix minimum pour chaque objet." },
   { titre: "On s'occupe de tout", texte: "Photos, annonces, échanges avec les acheteurs et négociation. Vos objets restent chez vous jusqu'à la vente." },
   { titre: "Vous êtes payé", texte: "L'argent vous est reversé après chaque vente, commission déduite, avec le détail de chaque vente." },
@@ -208,6 +208,14 @@ export function Zone() {
                 {c}
               </li>
             ))}
+            <li>
+              <a
+                href="#estimation"
+                className="inline-block rounded-full border border-dashed border-ardoise/60 px-4 py-2 font-medium text-ardoise transition hover:bg-ardoise-clair/40"
+              >
+                Autre commune ?
+              </a>
+            </li>
           </ul>
           {!site.communesValidees && (
             <p className="mt-4">
@@ -242,12 +250,6 @@ export function Questions() {
             </details>
           ))}
         </div>
-        {(!site.delaiPaiement || !site.assuranceSouscrite) && (
-          <p className="mt-5 flex flex-wrap gap-2">
-            {!site.delaiPaiement && <Todo label="délai de paiement" />}
-            {!site.assuranceSouscrite && <Todo label="assurance RC Pro à confirmer" />}
-          </p>
-        )}
       </div>
     </section>
   );

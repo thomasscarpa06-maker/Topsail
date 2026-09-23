@@ -119,9 +119,12 @@ export function Estimation() {
                   </a>
                 </>
               ) : (
-                <span className="rounded-md border border-dashed border-safran-fonce/60 bg-safran/10 px-1.5 py-0.5 text-sm font-medium text-safran-fonce">
-                  À définir : numéro de téléphone
-                </span>
+                <>
+                  Ou écrivez-nous à{" "}
+                  <a href={`mailto:${site.email}`} className="font-semibold text-ardoise">
+                    {site.email}
+                  </a>
+                </>
               )}
             </p>
           </div>

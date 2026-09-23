@@ -1,6 +1,5 @@
 import { site } from "@/config/site";
 import { Logo } from "./Logo";
-import { Todo } from "./Todo";
 
 export function Footer() {
   return (
@@ -22,15 +21,13 @@ export function Footer() {
                 {site.email}
               </a>
             </li>
-            <li>
-              {site.phone ? (
+            {site.phone && (
+              <li>
                 <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="text-ardoise">
                   {site.phone}
                 </a>
-              ) : (
-                <Todo label="téléphone" />
-              )}
-            </li>
+              </li>
+            )}
           </ul>
         </div>
       </div>
