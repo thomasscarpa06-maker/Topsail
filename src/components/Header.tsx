@@ -1,49 +1,37 @@
-"use client";
+import { Logo } from "./Logo";
 
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import { MARQUE } from "@/lib/constants";
-import Logo from "./Logo";
+const liens = [
+  { href: "/#comment-ca-marche", label: "Comment ça marche" },
+  { href: "/#ce-quon-prend", label: "Ce qu'on prend" },
+  { href: "/#tarifs", label: "Tarifs" },
+  { href: "/#questions", label: "Questions" },
+];
 
-/**
- * En-tête collant.
- * - Sur le hero (sombre) : fond transparent, texte et bouton en chaux.
- * - Une fois le hero dépassé : fond chaux, texte encre. Transition douce.
- *
- * IntersectionObserver sur la section hero. Le rootMargin négatif (hauteur de
- * l'en-tête) fait basculer vers l'état plein exactement quand le bas du hero
- * atteint le bas de l'en-tête — donc au moment où la section claire suivante
- * arrive sous l'en-tête, jamais recouverte de façon illisible.
- */
-export default function Header() {
-  const ref = useRef<HTMLElement>(null);
-  const [solide, setSolide] = useState(false);
-
-  useEffect(() => {
-    const hero = document.querySelector(".hero");
-    const header = ref.current;
-    if (!hero || !header) {
-      setSolide(true); // pas de hero : en-tête plein par défaut
-      return;
-    }
-    const hauteur = header.offsetHeight || 68;
-    const io = new IntersectionObserver(
-      ([e]) => setSolide(!e.isIntersecting),
-      { rootMargin: `-${hauteur}px 0px 0px 0px`, threshold: 0 },
-    );
-    io.observe(hero);
-    return () => io.disconnect();
-  }, []);
-
+export function Header() {
   return (
-    <header ref={ref} className={solide ? "solide" : undefined}>
-      <div className="wrap bar">
-        <Link className="marque" href="/" aria-label={MARQUE}>
-          <Logo className="logo" />
-        </Link>
-        <Link className="btn btn--plein" href="/#rdv">
-          Réserver un appel
-        </Link>
+    <header className="sticky top-0 z-40 border-b border-nuit/10 bg-sable/90 backdrop-blur supports-[backdrop-filter]:bg-sable/80">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+        <a href="/" aria-label="Topsail, retour en haut de page" className="shrink-0">
+          <Logo className="h-8 w-auto sm:h-9" />
+        </a>
+        <nav aria-label="Navigation principale" className="hidden lg:block">
+          <ul className="flex items-center gap-7 text-[0.95rem] font-medium text-nuit/80">
+            {liens.map((l) => (
+              <li key={l.href}>
+                <a href={l.href} className="transition-colors hover:text-ardoise">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <a
+          href="/#estimation"
+          className="rounded-full bg-safran px-4 py-2.5 text-[0.9rem] font-semibold text-nuit shadow-sm transition hover:brightness-105 sm:px-5"
+        >
+          <span className="sm:hidden">Estimation</span>
+          <span className="hidden sm:inline">Demander une estimation</span>
+        </a>
       </div>
     </header>
   );

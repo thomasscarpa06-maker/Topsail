@@ -1,81 +1,59 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Pourquoi from "@/components/Pourquoi";
-import Promesses from "@/components/Promesses";
-import Deroule from "@/components/Deroule";
-import Prix from "@/components/Prix";
-import RendezVous from "@/components/RendezVous";
-import Zone from "@/components/Zone";
-import Questions, { questions } from "@/components/Questions";
-import Footer from "@/components/Footer";
-import ScrollReveal from "@/components/ScrollReveal";
-import { SITE_URL, EMAIL } from "@/lib/constants";
+import { site, getFaq } from "@/config/site";
+import { Header } from "@/components/Header";
+import { Hero } from "@/components/Hero";
+import { Etapes, Objets, PourQui, Tarifs, Zone, Questions } from "@/components/Sections";
+import { Estimation } from "@/components/Estimation";
+import { Footer } from "@/components/Footer";
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Topsail",
-  description:
-    "Création de sites web pour les commerces, artisans et professions libérales du bassin grassois et cannois.",
-  url: SITE_URL,
-  email: EMAIL,
-  image: `${SITE_URL}/og.png`,
-  priceRange: "600 € - 2400 €",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Grasse",
-    addressRegion: "Alpes-Maritimes",
-    addressCountry: "FR",
-  },
-  areaServed: [
-    "Grasse",
-    "Cannes",
-    "Mouans-Sartoux",
-    "Mougins",
-    "Le Cannet",
-    "Valbonne",
-    "Pégomas",
-    "Peymeinade",
-  ],
-  knowsAbout: "Création de sites web",
-};
+function JsonLd() {
+  const localBusiness = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: site.name,
+    description: "Dépôt-vente à domicile dans le Pays de Grasse : nous vendons vos meubles et objets pour vous.",
+    url: site.url,
+    email: site.email,
+    ...(site.phone ? { telephone: site.phone } : {}), // TODO [À DÉFINIR] : téléphone
+    image: `${site.url}/opengraph-image`,
+    address: { "@type": "PostalAddress", addressLocality: "Grasse", postalCode: "06130", addressCountry: "FR" },
+    areaServed: site.communes.map((c) => ({ "@type": "City", name: c })),
+    priceRange: "Commission sur les ventes",
+  };
 
-// FAQPage — reprend les six questions/réponses de la section Questions, seule
-// source de vérité, pour permettre l'affichage enrichi dans Google.
-const faqLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: questions.map(({ q, r }) => ({
-    "@type": "Question",
-    name: q,
-    acceptedAnswer: { "@type": "Answer", text: r },
-  })),
-};
+  const faqPage = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: getFaq().map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPage) }} />
+    </>
+  );
+}
 
 export default function Home() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
-      />
+      <JsonLd />
       <Header />
       <main>
         <Hero />
-        <Pourquoi />
-        <Promesses />
-        <Deroule />
-        <Prix />
-        <RendezVous />
+        <Etapes />
+        <Objets />
+        <PourQui />
+        <Tarifs />
         <Zone />
         <Questions />
+        <Estimation />
       </main>
       <Footer />
-      <ScrollReveal />
     </>
   );
 }
