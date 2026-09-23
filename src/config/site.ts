@@ -23,18 +23,17 @@ export const site = {
   calendly: "https://calendly.com/topsail-grasse/20min",
 
   tarifs: {
-    // TODO [À DÉFINIR] : estimation gratuite, ou frais de déplacement déduits de la commission ?
     // Texte libre affiché dans la section Tarifs.
-    estimation: null as string | null,
+    estimation: "Gratuite" as string | null,
 
-    // TODO [À DÉFINIR] : commission en % du prix de vente (ex. 35)
-    commissionPct: null as number | null,
+    // Commission en % du prix de vente.
+    commissionPct: 30 as number | null,
 
-    // TODO [À DÉFINIR] : valeur minimum par objet en euros (ex. 40)
-    valeurMinimum: null as number | null,
+    // Valeur minimum par objet en euros.
+    valeurMinimum: 20 as number | null,
 
-    // TODO [À DÉFINIR] : nombre de semaines avant qu'un objet soit considéré comme invendu (ex. 8)
-    semainesInvendu: null as number | null,
+    // Nombre de semaines avant qu'un objet soit considéré comme invendu.
+    semainesInvendu: 8 as number | null,
   },
 
   // TODO [À DÉFINIR] : délai de paiement après une vente (ex. "sous 7 jours")
@@ -58,7 +57,7 @@ export const site = {
     "Magagnosc",
     "Plascassier",
   ],
-  communesValidees: false,
+  communesValidees: true,
 
   mentionsLegales: {
     // TODO [À DÉFINIR] : nom et prénom du porteur de la micro-entreprise
