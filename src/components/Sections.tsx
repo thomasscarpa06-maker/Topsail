@@ -16,7 +16,7 @@ function Titre({ sur, titre, intro }: { sur: string; titre: string; intro?: Reac
 const etapes = [
   { titre: "Vous nous contactez", texte: "Par le formulaire avec quelques photos, ou par téléphone. On vous répond rapidement." },
   { titre: "On passe chez vous", texte: "On repère ce qui peut se vendre et on fixe ensemble un prix minimum pour chaque objet." },
-  { titre: "On s'occupe de tout", texte: "Photos, annonces, échanges avec les acheteurs, négociation et remise de l'objet." },
+  { titre: "On s'occupe de tout", texte: "Photos, annonces, échanges avec les acheteurs et négociation. Vos objets restent chez vous jusqu'à la vente." },
   { titre: "Vous êtes payé", texte: "L'argent vous est reversé après chaque vente, commission déduite, avec le détail de chaque vente." },
 ];
 
@@ -26,7 +26,7 @@ export function Etapes() {
       <Titre sur="Comment ça marche" titre="Quatre étapes, et vous n'avez rien à gérer" />
       <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {etapes.map((e, i) => (
-          <li key={e.titre} className="relative rounded-2xl border border-nuit/10 bg-white/60 p-6">
+          <li key={e.titre} className="relative rounded-2xl border border-nuit/10 bg-white p-6 shadow-sm">
             <span className="font-serif text-5xl font-semibold text-safran">{i + 1}</span>
             <h3 className="mt-3 text-xl font-semibold text-nuit">{e.titre}</h3>
             <p className="mt-2 text-gris">{e.texte}</p>
@@ -49,18 +49,19 @@ export function Etapes() {
 /* ───────────── Ce qu'on prend ───────────── */
 
 const oui = [
-  "Mobilier ancien, vintage ou design",
+  "Petit mobilier (chevets, chaises, tables d'appoint…)",
   "Luminaires",
   "Vaisselle et verrerie",
   "Objets de décoration",
   "Brocante et objets de collection",
-  "Électroménager en bon état",
+  "Petit électroménager en bon état",
   "Outillage",
   "Vélos",
   "Instruments de musique",
 ];
 
 const non = [
+  "Gros meubles (armoires, buffets, canapés…)",
   "Objets cassés ou très abîmés",
   "Literie",
   "Vêtements courants",
@@ -89,7 +90,7 @@ export function Objets() {
               ))}
             </ul>
           </div>
-          <div className="rounded-2xl border border-nuit/10 p-7">
+          <div className="rounded-2xl border border-nuit/10 bg-white/50 p-7">
             <h3 className="flex items-center gap-2 text-xl font-semibold text-nuit">
               <span aria-hidden className="grid h-8 w-8 place-items-center rounded-full bg-nuit/10 text-nuit">✕</span>
               Non, désolés
@@ -118,34 +119,22 @@ export function Objets() {
 /* ───────────── Pour qui ───────────── */
 
 const situations = [
-  { titre: "Succession", texte: "La maison d'un proche à vider. Nous trions et vendons avec respect et discrétion." },
+  { titre: "Grand tri", texte: "Placards, grenier, garage : vous triez, nous vendons ce qui a de la valeur." },
   { titre: "Déménagement", texte: "Tout ne rentrera pas dans le nouveau logement. Ce qui part vous rapporte." },
-  { titre: "Maison de retraite", texte: "Un départ à préparer sans se soucier des affaires : nous nous en chargeons." },
-  { titre: "Grand tri", texte: "Grenier, garage, cave : vous triez, nous vendons ce qui a de la valeur." },
+  { titre: "Succession", texte: "Les objets d'un proche à vendre, avec respect et discrétion." },
 ];
 
 export function PourQui() {
   return (
     <section id="pour-qui" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-28">
-      <Titre sur="Pour qui" titre="Pour les moments où il faut libérer de la place" />
-      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <Titre sur="Pour qui" titre="Pour les moments où il faut faire de la place" />
+      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {situations.map((s) => (
-          <div key={s.titre} className="rounded-2xl bg-nuit p-6 text-sable">
-            <h3 className="font-serif text-2xl font-semibold text-safran">{s.titre}</h3>
-            <p className="mt-3 text-sable/85">{s.texte}</p>
+          <div key={s.titre} className="rounded-2xl border border-nuit/10 border-t-4 border-t-safran bg-white p-7 shadow-sm">
+            <h3 className="font-serif text-2xl font-semibold text-ardoise">{s.titre}</h3>
+            <p className="mt-3 text-gris">{s.texte}</p>
           </div>
         ))}
-      </div>
-      <div className="mt-6 flex flex-col items-start justify-between gap-4 rounded-2xl border border-ardoise/25 bg-ardoise-clair/50 p-6 md:flex-row md:items-center">
-        <p className="text-lg text-nuit">
-          <strong>Vous êtes notaire, agent immobilier ou travaillez en EHPAD&nbsp;?</strong> Parlons partenariat.
-        </p>
-        <a
-          href={`mailto:${site.email}?subject=${encodeURIComponent("Partenariat Topsail")}`}
-          className="shrink-0 rounded-full bg-ardoise px-6 py-3 font-semibold text-sable transition hover:bg-nuit"
-        >
-          Nous écrire
-        </a>
       </div>
     </section>
   );
@@ -171,39 +160,32 @@ export function Tarifs() {
       note: "En dessous, possibilité de vente en lot.",
     },
     {
-      titre: "Option débarras",
-      valeur: "Sur devis",
-      note: "Pour ce qui ne se vend pas : don, recyclage, déchetterie.",
-    },
-    {
       titre: "Objets invendus",
       valeur: t.semainesInvendu ? `Après ${t.semainesInvendu} semaines` : <Todo label="nombre de semaines" />,
-      note: "Restitués, donnés ou débarrassés selon votre choix, précisé dans le mandat.",
+      note: "Ils restent simplement chez vous, ou sont retirés de la vente selon votre choix.",
     },
   ];
 
   return (
-    <section id="tarifs" className="bg-nuit text-sable">
+    <section id="tarifs" className="bg-ardoise-clair">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 md:py-28 lg:grid-cols-[1fr_1.3fr]">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-safran">Tarifs</p>
-          <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight sm:text-[2.6rem]">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-safran-fonce">Tarifs</p>
+          <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-nuit sm:text-[2.6rem]">
             Vous ne payez que si ça se vend
           </h2>
-          <p className="mt-4 text-lg text-sable/80">
+          <p className="mt-4 text-lg text-gris">
             Pas de frais cachés, pas d&apos;avance. Tout est écrit noir sur blanc dans le mandat de vente.
           </p>
         </div>
-        <dl className="divide-y divide-sable/15 rounded-2xl border border-sable/15 bg-nuit-2">
+        <dl className="divide-y divide-nuit/10 rounded-2xl border border-nuit/10 bg-white shadow-sm">
           {lignes.map((l) => (
             <div key={l.titre} className="grid gap-1 px-6 py-5 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6">
               <dt>
-                <span className="font-semibold">{l.titre}</span>
-                {l.note && <span className="mt-0.5 block text-[0.95rem] text-sable/65">{l.note}</span>}
+                <span className="font-semibold text-nuit">{l.titre}</span>
+                {l.note && <span className="mt-0.5 block text-[0.95rem] text-gris">{l.note}</span>}
               </dt>
-              <dd className="font-serif text-xl font-semibold text-safran sm:text-right [&_span]:font-sans [&_span]:text-sable [&_span]:border-sable/40 [&_span]:bg-sable/10">
-                {l.valeur}
-              </dd>
+              <dd className="font-serif text-xl font-semibold text-ardoise sm:text-right">{l.valeur}</dd>
             </div>
           ))}
         </dl>
@@ -217,7 +199,7 @@ export function Tarifs() {
 export function Zone() {
   return (
     <section id="zone" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-24">
-      <div className="grid gap-10 rounded-3xl bg-white p-8 shadow-sm md:grid-cols-[1fr_1.4fr] md:p-12">
+      <div className="grid gap-10 rounded-3xl border border-nuit/10 bg-white p-8 shadow-sm md:grid-cols-[1fr_1.4fr] md:p-12">
         <Titre sur="Zone d'intervention" titre="Grasse et alentours" intro="Nous nous déplaçons chez vous dans les communes suivantes." />
         <div>
           <ul className="flex flex-wrap gap-2.5">
@@ -260,10 +242,9 @@ export function Questions() {
             </details>
           ))}
         </div>
-        {(!site.delaiPaiement || !site.stockage || !site.assuranceSouscrite) && (
+        {(!site.delaiPaiement || !site.assuranceSouscrite) && (
           <p className="mt-5 flex flex-wrap gap-2">
             {!site.delaiPaiement && <Todo label="délai de paiement" />}
-            {!site.stockage && <Todo label="lieu de stockage" />}
             {!site.assuranceSouscrite && <Todo label="assurance RC Pro à confirmer" />}
           </p>
         )}

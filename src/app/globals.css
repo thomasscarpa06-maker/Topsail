@@ -9,7 +9,7 @@
   --color-ardoise: #1f4e6b;
   --color-ardoise-clair: #d7e3ea;
   --color-safran: #d98c1f;
-  --color-safran-fonce: #9a5a0b; /* safran lisible sur fond clair */
+  --color-safran-fonce: #804a08; /* safran lisible (AA) sur fonds clairs, y compris bleu-gris et tuiles safran/10 */
   --color-sable: #f6f1e7;
   --color-sable-2: #ede4d3;
   --color-kraft: #e2cfa9;
@@ -49,9 +49,4 @@ section[id] {
   html {
     scroll-behavior: auto;
   }
-}
-
-/* Grain léger pour le hero */
-.grain {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
 }

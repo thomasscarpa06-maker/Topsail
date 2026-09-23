@@ -8,7 +8,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
         <div>
           <Logo className="h-9 w-auto" />
-          <p className="mt-4 text-gris">Dépôt-vente à domicile dans le Pays de Grasse. On vide, on vend, vous encaissez.</p>
+          <p className="mt-4 text-gris">Dépôt-vente à domicile dans le Pays de Grasse. On vend vos objets pour vous.</p>
         </div>
         <div>
           <p className="font-semibold text-nuit">Zone d&apos;intervention</p>

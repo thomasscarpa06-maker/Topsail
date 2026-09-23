@@ -10,7 +10,7 @@ function JsonLd() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: site.name,
-    description: "Dépôt-vente à domicile dans le Pays de Grasse : nous vendons vos meubles et objets pour vous.",
+    description: "Dépôt-vente à domicile dans le Pays de Grasse : nous vendons vos objets, votre déco et votre petit mobilier pour vous.",
     url: site.url,
     email: site.email,
     ...(site.phone ? { telephone: site.phone } : {}), // TODO [À DÉFINIR] : téléphone

@@ -7,7 +7,7 @@ const MAX_PHOTOS = 5;
 const MAX_COTE = 1600; // px, côté le plus long après compression
 const MAX_TOTAL = 4 * 1024 * 1024; // limite d'envoi (Vercel : 4,5 Mo par requête)
 
-const situations = ["Succession", "Déménagement", "Maison de retraite", "Tri", "Autre"];
+const situations = ["Tri", "Déménagement", "Succession", "Autre"];
 
 type Photo = { file: File; url: string };
 type Etat = "idle" | "envoi" | "ok" | "erreur";
@@ -89,37 +89,37 @@ export function Estimation() {
   }
 
   return (
-    <section id="estimation" className="bg-nuit">
+    <section id="estimation" className="bg-sable-2">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 sm:px-6 md:py-28 lg:grid-cols-[1fr_1.5fr]">
-        <div className="text-sable">
-          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-safran">Demande d&apos;estimation</p>
-          <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight sm:text-[2.6rem]">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-safran-fonce">Demande d&apos;estimation</p>
+          <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-nuit sm:text-[2.6rem]">
             Montrez-nous ce que vous voulez vendre
           </h2>
-          <p className="mt-4 text-lg text-sable/80">
+          <p className="mt-4 text-lg text-gris">
             Quelques photos suffisent pour une première idée. On vous rappelle pour convenir d&apos;un passage chez vous.
           </p>
 
-          <div className="mt-10 rounded-2xl border border-sable/15 bg-nuit-2 p-6">
-            <p className="font-semibold">Vous préférez en parler&nbsp;?</p>
+          <div className="mt-10 rounded-2xl border border-nuit/10 bg-white p-6 shadow-sm">
+            <p className="font-semibold text-nuit">Vous préférez en parler&nbsp;?</p>
             <a
               href={site.calendly}
               target="_blank"
               rel="noopener"
-              className="mt-4 inline-block rounded-full border border-sable/30 px-5 py-2.5 font-medium transition hover:bg-sable/10"
+              className="mt-4 inline-block rounded-full border border-nuit/25 px-5 py-2.5 font-medium text-nuit transition hover:bg-nuit/5"
             >
               Réserver un appel
             </a>
-            <p className="mt-4 text-sable/80">
+            <p className="mt-4 text-gris">
               {site.phone ? (
                 <>
                   Ou appelez-nous au{" "}
-                  <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="font-semibold text-safran">
+                  <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="font-semibold text-ardoise">
                     {site.phone}
                   </a>
                 </>
               ) : (
-                <span className="rounded-md border border-dashed border-sable/40 bg-sable/10 px-1.5 py-0.5 text-sm">
+                <span className="rounded-md border border-dashed border-safran-fonce/60 bg-safran/10 px-1.5 py-0.5 text-sm font-medium text-safran-fonce">
                   À définir : numéro de téléphone
                 </span>
               )}
@@ -127,7 +127,7 @@ export function Estimation() {
           </div>
         </div>
 
-        <div className="rounded-3xl bg-sable p-6 shadow-2xl sm:p-9">
+        <div className="rounded-3xl border border-nuit/10 bg-white p-6 shadow-xl sm:p-9">
           {etat === "ok" ? (
             <div role="status" className="py-10 text-center">
               <p className="font-serif text-3xl font-semibold text-nuit">Merci, c&apos;est bien reçu&nbsp;!</p>
@@ -141,7 +141,7 @@ export function Estimation() {
               </button>
             </div>
           ) : (
-            <form onSubmit={envoyer} className="grid gap-5 sm:grid-cols-2" noValidate={false}>
+            <form onSubmit={envoyer} className="grid gap-5 sm:grid-cols-2">
               {/* Anti-spam : champ invisible que seuls les robots remplissent */}
               <div aria-hidden className="absolute -left-[9999px]">
                 <label htmlFor="site-web">Ne pas remplir</label>

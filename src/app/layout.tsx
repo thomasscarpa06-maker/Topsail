@@ -2,20 +2,20 @@ import type { Metadata, Viewport } from "next";
 import { site } from "@/config/site";
 import "./globals.css";
 
-const titre = "Topsail — Dépôt-vente à domicile à Grasse | On vide, on vend pour vous";
+const titre = "Topsail — Dépôt-vente à domicile à Grasse | On vend vos objets pour vous";
 const description =
-  "Dépôt-vente à domicile dans le Pays de Grasse : estimation gratuite, on vend vos meubles et objets pour vous. Succession, déménagement, tri.";
+  "Dépôt-vente à domicile dans le Pays de Grasse : estimation gratuite, on vend vos objets, votre déco et votre petit mobilier pour vous. Tri, déménagement, succession.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: titre,
   description,
   keywords: [
-    "dépôt-vente Grasse",
-    "vider maison succession Grasse",
-    "débarras Grasse",
-    "vendre meubles anciens Grasse",
+    "dépôt-vente à domicile Grasse",
+    "vendre ses objets Pays de Grasse",
     "estimation objets à domicile 06",
+    "dépôt-vente succession Grasse",
+    "vendre déco et petit mobilier Grasse",
   ],
   alternates: { canonical: "/" },
   openGraph: {
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0E1A2B",
+  themeColor: "#F6F1E7",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

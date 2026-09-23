@@ -98,11 +98,11 @@ export function getFaq(): Faq[] {
       q: "Où sont stockés mes objets ?",
       a:
         site.stockage ??
-        "Selon les cas, les objets restent chez vous jusqu'à la vente ou sont pris en charge par nos soins. Nous en parlons lors de l'estimation.",
+        "Chez vous. Nous n'avons pas d'entrepôt : vos objets restent à leur place jusqu'à la vente, et nous organisons le retrait avec l'acheteur.",
     },
     {
       q: "Et si un objet ne se vend pas ?",
-      a: "Il vous est restitué, donné ou débarrassé, selon ce que vous avez choisi dans le mandat de vente.",
+      a: "Il reste chez vous, tout simplement. Nous pouvons baisser le prix avec votre accord, ou le retirer de la vente.",
     },
     {
       q: "Mes objets sont-ils assurés ?",
@@ -112,7 +112,7 @@ export function getFaq(): Faq[] {
     },
     {
       q: "Intervenez-vous pour une succession ?",
-      a: "Oui, avec discrétion, en lien avec les héritiers ou le notaire. Nous pouvons trier, estimer et vendre, puis débarrasser le reste si vous le souhaitez.",
+      a: "Oui, avec discrétion. Nous repérons les objets qui ont de la valeur et nous les vendons pour vous.",
     },
   ];
 }
