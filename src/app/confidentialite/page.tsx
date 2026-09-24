@@ -5,6 +5,8 @@ import { Todo } from "@/components/Todo";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité — Topsail",
+  description:
+    "Politique de confidentialité de Topsail : données collectées via le formulaire d'estimation, finalités, durées de conservation et vos droits.",
   alternates: { canonical: "/confidentialite" },
 };
 

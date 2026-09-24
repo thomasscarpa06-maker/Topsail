@@ -1,10 +1,18 @@
 import type { Metadata, Viewport } from "next";
+import { Fraunces, Inter } from "next/font/google";
 import { site } from "@/config/site";
 import "./globals.css";
 
-const titre = "Topsail — Dépôt-vente à domicile à Grasse | On vend vos objets pour vous";
+// Polices auto-hébergées via next/font (téléchargées au build, servies depuis
+// le domaine — aucun CDN Google à l'exécution). next/font génère une police de
+// repli aux métriques ajustées, ce qui supprime le décalage de mise en page
+// (CLS) au chargement de la police.
+const serif = Fraunces({ subsets: ["latin"], variable: "--nf-serif", display: "swap" });
+const sans = Inter({ subsets: ["latin"], variable: "--nf-sans", display: "swap" });
+
+const titre = "Dépôt-vente à domicile à Grasse | Topsail";
 const description =
-  "Dépôt-vente à domicile dans le Pays de Grasse : estimation gratuite, on vend vos objets, votre déco et votre petit mobilier pour vous. Tri, déménagement, succession.";
+  "Dépôt-vente à domicile à Grasse : on vend vos objets, votre déco et votre petit mobilier pour vous. Estimation gratuite, commission sur les ventes.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -36,7 +44,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={`${serif.variable} ${sans.variable}`}>
       <body>{children}</body>
     </html>
   );
