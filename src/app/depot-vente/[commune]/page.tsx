@@ -39,7 +39,7 @@ export async function generateMetadata({
   const c = getCommuneBySlug(commune);
   if (!c) return {};
   const url = `/depot-vente/${c.slug}`;
-  const titre = `Dépôt-vente à domicile à ${c.nom} | Topsail`;
+  const titre = `Dépôt-vente à domicile à ${c.nom} (06) | Topsail`;
   const description = `Dépôt-vente à domicile à ${c.nom} : estimation gratuite, nous vendons vos objets, votre déco et votre petit mobilier. Vous ne payez qu'à la vente.`;
   return {
     title: titre,

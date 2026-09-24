@@ -10,9 +10,9 @@ import "./globals.css";
 const serif = Fraunces({ subsets: ["latin"], variable: "--nf-serif", display: "swap" });
 const sans = Inter({ subsets: ["latin"], variable: "--nf-sans", display: "swap" });
 
-const titre = "Topsail — Dépôt-vente à domicile à Grasse | On vend vos objets pour vous";
+const titre = "Dépôt-vente à domicile à Grasse | Topsail";
 const description =
-  "Dépôt-vente à domicile dans le Pays de Grasse : estimation gratuite, on vend vos objets, votre déco et votre petit mobilier pour vous. Tri, déménagement, succession.";
+  "Dépôt-vente à domicile à Grasse : on vend vos objets, votre déco et votre petit mobilier pour vous. Estimation gratuite, commission sur les ventes.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

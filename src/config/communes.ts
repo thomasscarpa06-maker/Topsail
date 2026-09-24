@@ -14,7 +14,7 @@ type ContenuCommune = { intro: string; deplacement: FaqItem };
 const contenu: Record<string, ContenuCommune> = {
   Grasse: {
     intro:
-      "Grasse est notre point d'ancrage : c'est ici que nous nous déplaçons le plus souvent pour estimer et vendre les objets des habitants. Que vous viviez en centre-ville, dans les hauteurs ou dans les quartiers résidentiels, nous venons chez vous, gratuitement, regarder ce qui peut se vendre.",
+      "Grasse est notre point d'ancrage : c'est ici que nous nous déplaçons le plus souvent pour estimer et vendre les objets des habitants. Quel que soit votre quartier, nous venons chez vous, gratuitement, regarder ce qui peut se vendre.",
     deplacement: {
       q: "Vous déplacez-vous partout à Grasse ?",
       a: "Oui, dans tous les quartiers de Grasse. Nous convenons ensemble d'un créneau et nous venons chez vous pour l'estimation, sans engagement.",
