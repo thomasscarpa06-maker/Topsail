@@ -5,6 +5,8 @@ import { Todo } from "@/components/Todo";
 
 export const metadata: Metadata = {
   title: "Mentions légales — Topsail",
+  description:
+    "Mentions légales de Topsail, dépôt-vente à domicile dans le Pays de Grasse : éditeur, activité réglementée et hébergeur du site.",
   alternates: { canonical: "/mentions-legales" },
 };
 

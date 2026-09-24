@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@import "@fontsource-variable/inter";
-@import "@fontsource-variable/fraunces";
 
 @theme {
   /* Palette Topsail (registre marin, accent safran) */
@@ -16,8 +14,8 @@
   --color-encre: #1b2533;
   --color-gris: #4a5565;
 
-  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Fraunces Variable", ui-serif, Georgia, serif;
+  --font-sans: var(--nf-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--nf-serif), ui-serif, Georgia, serif;
 }
 
 html {

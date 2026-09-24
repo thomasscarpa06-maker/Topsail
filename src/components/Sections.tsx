@@ -1,5 +1,22 @@
+import Link from "next/link";
 import { site, getFaq } from "@/config/site";
+import { slugify } from "@/lib/slug";
 import { Todo } from "./Todo";
+
+/* Accroche SEO courte, placée juste sous le hero. */
+export function AccrocheSeo() {
+  return (
+    <section className="border-b border-nuit/10 bg-sable">
+      <div className="mx-auto max-w-3xl px-4 py-5 text-center sm:px-6">
+        <p className="text-gris">
+          Topsail est un service de{" "}
+          <strong className="font-semibold text-nuit">dépôt-vente à domicile à Grasse</strong> et dans le Pays de
+          Grasse : nous estimons, photographions et vendons vos objets pour vous, et vous ne payez qu&apos;à la vente.
+        </p>
+      </div>
+    </section>
+  );
+}
 
 function Titre({ sur, titre, intro }: { sur: string; titre: string; intro?: React.ReactNode }) {
   return (
@@ -48,16 +65,16 @@ export function Etapes() {
 
 /* ───────────── Ce qu'on prend ───────────── */
 
-const oui = [
-  "Petit mobilier (chevets, chaises, tables d'appoint…)",
-  "Luminaires",
-  "Vaisselle et verrerie",
-  "Objets de décoration",
-  "Brocante et objets de collection",
-  "Petit électroménager en bon état",
-  "Outillage",
-  "Vélos",
-  "Instruments de musique",
+const oui: { label: string; href?: string }[] = [
+  { label: "Petit mobilier (chevets, chaises, tables d'appoint…)", href: "/vendre/vendre-petit-mobilier-grasse" },
+  { label: "Luminaires", href: "/vendre/vendre-luminaires-vintage-grasse" },
+  { label: "Vaisselle et verrerie", href: "/vendre/vendre-vaisselle-ancienne-grasse" },
+  { label: "Objets de décoration", href: "/vendre/vendre-objets-deco-grasse" },
+  { label: "Brocante et objets de collection", href: "/vendre/vendre-objets-collection-grasse" },
+  { label: "Petit électroménager en bon état" },
+  { label: "Outillage" },
+  { label: "Vélos" },
+  { label: "Instruments de musique" },
 ];
 
 const non = [
@@ -83,9 +100,15 @@ export function Objets() {
             </h3>
             <ul className="mt-5 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
               {oui.map((o) => (
-                <li key={o} className="flex gap-2.5">
+                <li key={o.label} className="flex gap-2.5">
                   <span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-safran" />
-                  {o}
+                  {o.href ? (
+                    <Link href={o.href} className="text-ardoise underline-offset-4 hover:underline">
+                      {o.label}
+                    </Link>
+                  ) : (
+                    <span className="text-nuit">{o.label}</span>
+                  )}
                 </li>
               ))}
             </ul>
@@ -204,8 +227,13 @@ export function Zone() {
         <div>
           <ul className="flex flex-wrap gap-2.5">
             {site.communes.map((c) => (
-              <li key={c} className="rounded-full border border-ardoise/25 bg-ardoise-clair/40 px-4 py-2 font-medium text-nuit">
-                {c}
+              <li key={c}>
+                <Link
+                  href={`/depot-vente/${slugify(c)}`}
+                  className="inline-block rounded-full border border-ardoise/25 bg-ardoise-clair/40 px-4 py-2 font-medium text-nuit transition hover:bg-ardoise-clair"
+                >
+                  {c}
+                </Link>
               </li>
             ))}
             <li>
