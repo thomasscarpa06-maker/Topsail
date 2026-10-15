@@ -6,7 +6,7 @@ import { Todo } from "@/components/Todo";
 export const metadata: Metadata = {
   title: "Politique de confidentialité — Topsail",
   description:
-    "Politique de confidentialité de Topsail : données collectées via le formulaire d'estimation, finalités, durées de conservation et vos droits.",
+    "Politique de confidentialité de Topsail : données collectées via le formulaire d'audit, finalités, durées de conservation et vos droits.",
   alternates: { canonical: "/confidentialite" },
 };
 
@@ -23,23 +23,26 @@ export default function Confidentialite() {
 
       <section>
         <h2>Données collectées</h2>
-        <p>Lorsque vous demandez une estimation, nous recevons :</p>
+        <p>Lorsque vous demandez un audit, nous recevons :</p>
         <ul className="mt-2">
-          <li>votre nom, votre téléphone, votre e-mail et votre commune ;</li>
-          <li>votre situation et la description des objets ;</li>
-          <li>les photos que vous choisissez d&apos;envoyer.</li>
+          <li>votre nom et le nom de votre commerce ;</li>
+          <li>votre activité et votre ville ;</li>
+          <li>le lien de votre fiche Google, si vous le renseignez ;</li>
+          <li>votre e-mail et votre téléphone.</li>
         </ul>
         <p className="mt-3">
-          Merci de ne pas envoyer de photos où apparaissent des personnes ou des documents personnels.
+          Pour réaliser l&apos;audit, nous consultons les informations publiques de votre fiche Google (note, nombre
+          d&apos;avis, avis publiés) ainsi que celles de vos concurrents directs. Ces données sont déjà publiques et
+          accessibles à tous.
         </p>
       </section>
 
       <section>
         <h2>Pourquoi et sur quelle base</h2>
         <p>
-          Ces données servent uniquement à répondre à votre demande, organiser l&apos;estimation et, le cas échéant,
-          préparer le mandat de vente. Le traitement repose sur votre consentement, donné en cochant la case du
-          formulaire, puis sur l&apos;exécution du mandat si vous nous confiez des objets.
+          Ces données servent uniquement à réaliser votre audit, vous recontacter et, le cas échéant, mettre en place le
+          service. Le traitement repose sur votre consentement, donné en cochant la case du formulaire, puis sur
+          l&apos;exécution du contrat si vous décidez de travailler avec nous.
         </p>
       </section>
 
@@ -48,7 +51,7 @@ export default function Confidentialite() {
         {/* TODO [À VALIDER] : durée de conservation (3 ans = référence CNIL pour les contacts commerciaux) */}
         <p>
           Les demandes sans suite sont conservées au maximum 3 ans après le dernier contact. Les informations liées à un
-          mandat de vente sont conservées pendant la durée imposée par nos obligations légales et comptables.
+          contrat en cours sont conservées pendant la durée imposée par nos obligations légales et comptables.
         </p>
       </section>
 

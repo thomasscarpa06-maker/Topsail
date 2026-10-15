@@ -1,139 +1,153 @@
-import Link from "next/link";
-import { site, getFaq } from "@/config/site";
-import { slugify } from "@/lib/slug";
-import { Todo } from "./Todo";
+import { getFaq, pourQui } from "@/config/site";
+import { Check } from "./Check";
 
-/* Accroche SEO courte, placée juste sous le hero. */
-export function AccrocheSeo() {
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return <p className="text-sm font-semibold uppercase tracking-[0.14em] text-or-fonce">{children}</p>;
+}
+
+/* ───────────── Le problème ───────────── */
+
+const problemes = [
+  {
+    t: "Une note sous 4 étoiles",
+    d: "Beaucoup de clients comparent les notes et choisissent le mieux noté, sans même vous appeler.",
+  },
+  {
+    t: "Des avis négatifs sans réponse",
+    d: "Ils restent visibles par tous et donnent l'impression que vous ne vous en souciez pas.",
+  },
+  {
+    t: "Trop peu d'avis",
+    d: "Face à un concurrent qui en a dix fois plus, vous paraissez moins fiable.",
+  },
+  {
+    t: "Pas le temps de s'en occuper",
+    d: "Vous êtes au travail, pas derrière un écran. Et c'est normal.",
+  },
+];
+
+export function Probleme() {
   return (
-    <section className="border-b border-nuit/10 bg-sable">
-      <div className="mx-auto max-w-3xl px-4 py-5 text-center sm:px-6">
-        <p className="text-gris">
-          Topsail est un service de{" "}
-          <strong className="font-semibold text-nuit">dépôt-vente à domicile à Grasse</strong> et dans le Pays de
-          Grasse : nous estimons, photographions et vendons vos objets pour vous, et vous ne payez qu&apos;à la vente.
+    <section id="probleme" className="bg-section">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+        <div className="max-w-2xl">
+          <Eyebrow>Le problème</Eyebrow>
+          <h2 className="mt-3 text-3xl font-bold text-encre sm:text-4xl">
+            Ce que votre fiche Google dit à vos futurs clients
+          </h2>
+        </div>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {problemes.map((p) => (
+            <div key={p.t} className="rounded-card bg-blanc p-6 shadow-douce">
+              <span aria-hidden className="grid h-9 w-9 place-items-center rounded-full bg-rouge/10 text-rouge">
+                <svg viewBox="0 0 20 20" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M10 6v5M10 14h.01" strokeLinecap="round" />
+                  <circle cx="10" cy="10" r="8" />
+                </svg>
+              </span>
+              <h3 className="mt-4 text-lg font-bold text-encre">{p.t}</h3>
+              <p className="mt-2 text-encre-doux">{p.d}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-8 border-l-4 border-rouge pl-4 text-lg font-semibold text-encre">
+          Le pire&nbsp;? Ces clients perdus, vous ne les voyez jamais.
         </p>
       </div>
     </section>
   );
 }
 
-function Titre({ sur, titre, intro }: { sur: string; titre: string; intro?: React.ReactNode }) {
-  return (
-    <div className="max-w-2xl">
-      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-safran-fonce">{sur}</p>
-      <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-nuit sm:text-[2.6rem]">{titre}</h2>
-      {intro && <p className="mt-4 text-lg text-gris">{intro}</p>}
-    </div>
-  );
-}
-
 /* ───────────── Comment ça marche ───────────── */
 
 const etapes = [
-  { titre: "Vous nous contactez", texte: "Par le formulaire avec quelques photos, ou par e-mail. On vous répond rapidement." },
-  { titre: "On passe chez vous", texte: "On repère ce qui peut se vendre et on fixe ensemble un prix minimum pour chaque objet." },
-  { titre: "On s'occupe de tout", texte: "Photos, annonces, échanges avec les acheteurs et négociation. Vos objets restent chez vous jusqu'à la vente." },
-  { titre: "Vous êtes payé", texte: "L'argent vous est reversé après chaque vente, commission déduite, avec le détail de chaque vente." },
+  {
+    t: "Audit gratuit",
+    d: "On analyse votre fiche, on la compare à vos concurrents directs et on vous montre ce qui vous coûte des clients.",
+  },
+  {
+    t: "Installation en 48 h",
+    d: "Demande d'avis automatique après chaque client, réponses préparées pour chaque avis, alerte en cas d'avis négatif.",
+  },
+  {
+    t: "Suivi chaque mois",
+    d: "Un rapport simple sur l'évolution de votre note et de vos avis face à vos concurrents.",
+  },
 ];
 
-export function Etapes() {
+export function CommentCaMarche() {
   return (
-    <section id="comment-ca-marche" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-28">
-      <Titre sur="Comment ça marche" titre="Quatre étapes, et vous n'avez rien à gérer" />
-      <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    <section id="comment" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+      <div className="max-w-2xl">
+        <Eyebrow>Comment ça marche</Eyebrow>
+        <h2 className="mt-3 text-3xl font-bold text-encre sm:text-4xl">Simple, et vous gardez la main</h2>
+      </div>
+      <ol className="mt-10 grid gap-5 md:grid-cols-3">
         {etapes.map((e, i) => (
-          <li key={e.titre} className="relative rounded-2xl border border-nuit/10 bg-white p-6 shadow-sm">
-            <span className="font-serif text-5xl font-semibold text-safran">{i + 1}</span>
-            <h3 className="mt-3 text-xl font-semibold text-nuit">{e.titre}</h3>
-            <p className="mt-2 text-gris">{e.texte}</p>
+          <li key={e.t} className="rounded-card bg-blanc p-6 shadow-douce">
+            <span className="font-display text-4xl font-bold text-bleu">{i + 1}</span>
+            <h3 className="mt-3 text-xl font-bold text-encre">{e.t}</h3>
+            <p className="mt-2 text-encre-doux">{e.d}</p>
           </li>
         ))}
       </ol>
-      <p className="mt-8 flex items-start gap-3 rounded-xl bg-ardoise-clair/60 px-5 py-4 text-nuit">
-        <svg aria-hidden viewBox="0 0 24 24" className="mt-0.5 h-6 w-6 shrink-0 text-ardoise" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <path d="M7 3h7l5 5v13H7z" />
-          <path d="M14 3v5h5M10 13h6M10 17h6" />
-        </svg>
-        <span>
-          <strong>Un mandat de vente écrit est signé avant toute prise en charge.</strong> Vous savez exactement ce qui est vendu, à quel prix minimum et ce que vous touchez.
-        </span>
-      </p>
     </section>
   );
 }
 
-/* ───────────── Ce qu'on prend ───────────── */
+/* ───────────── Ce qui est inclus ───────────── */
 
-const oui: { label: string; href?: string }[] = [
-  { label: "Petit mobilier (chevets, chaises, tables d'appoint…)", href: "/vendre/vendre-petit-mobilier-grasse" },
-  { label: "Luminaires", href: "/vendre/vendre-luminaires-vintage-grasse" },
-  { label: "Vaisselle et verrerie", href: "/vendre/vendre-vaisselle-ancienne-grasse" },
-  { label: "Objets de décoration", href: "/vendre/vendre-objets-deco-grasse" },
-  { label: "Brocante et objets de collection", href: "/vendre/vendre-objets-collection-grasse" },
-  { label: "Petit électroménager en bon état" },
-  { label: "Outillage" },
-  { label: "Vélos" },
-  { label: "Instruments de musique" },
+const inclus = [
+  "Demande d'avis par SMS ou QR code à tous vos clients",
+  "Réponses rédigées pour chaque avis, validées par vous en un clic",
+  "Alerte immédiate en cas d'avis négatif",
+  "QR code imprimé pour votre comptoir",
+  "Rapport mensuel sur votre note et vos avis",
+  "Un interlocuteur local, à Grasse, qui se déplace",
 ];
 
-const non = [
-  "Gros meubles (armoires, buffets, canapés…)",
-  "Objets cassés ou très abîmés",
-  "Literie",
-  "Vêtements courants",
-  "Objets de faible valeur à l'unité (sauf en lot)",
-  "Armes",
-  "Produits dangereux",
-];
-
-export function Objets() {
+export function Inclus() {
   return (
-    <section id="ce-quon-prend" className="bg-sable-2/70">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-28">
-        <Titre sur="Ce qu'on prend" titre="Ce que nous vendons pour vous" />
-        <div className="mt-12 grid gap-6 md:grid-cols-[1.4fr_1fr]">
-          <div className="rounded-2xl bg-white p-7 shadow-sm">
-            <h3 className="flex items-center gap-2 text-xl font-semibold text-nuit">
-              <span aria-hidden className="grid h-8 w-8 place-items-center rounded-full bg-ardoise text-sable">✓</span>
-              Oui, avec plaisir
-            </h3>
-            <ul className="mt-5 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
-              {oui.map((o) => (
-                <li key={o.label} className="flex gap-2.5">
-                  <span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-safran" />
-                  {o.href ? (
-                    <Link href={o.href} className="text-ardoise underline-offset-4 hover:underline">
-                      {o.label}
-                    </Link>
-                  ) : (
-                    <span className="text-nuit">{o.label}</span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="rounded-2xl border border-nuit/10 bg-white/50 p-7">
-            <h3 className="flex items-center gap-2 text-xl font-semibold text-nuit">
-              <span aria-hidden className="grid h-8 w-8 place-items-center rounded-full bg-nuit/10 text-nuit">✕</span>
-              Non, désolés
-            </h3>
-            <ul className="mt-5 space-y-2.5 text-gris">
-              {non.map((o) => (
-                <li key={o} className="flex gap-2.5">
-                  <span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-nuit/30" />
-                  {o}
-                </li>
-              ))}
-            </ul>
+    <section className="bg-section">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+        <div className="max-w-2xl">
+          <Eyebrow>Ce qui est inclus</Eyebrow>
+          <h2 className="mt-3 text-3xl font-bold text-encre sm:text-4xl">Tout est pris en charge</h2>
+        </div>
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+          {inclus.map((i) => (
+            <li key={i} className="flex items-start gap-3 rounded-card bg-blanc p-5 shadow-douce">
+              <Check className="mt-0.5 h-6 w-6 shrink-0 text-or" />
+              <span className="text-encre">{i}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+/* ───────────── Conformité ───────────── */
+
+export function Conformite() {
+  return (
+    <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+      <div className="rounded-card border border-trait bg-blanc p-8 shadow-douce sm:p-10">
+        <div className="flex items-start gap-4">
+          <span aria-hidden className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-or/15 text-or-fonce">
+            <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" strokeLinejoin="round" />
+              <path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+          <div>
+            <h2 className="text-2xl font-bold text-encre sm:text-3xl">100&nbsp;% conforme aux règles de Google</h2>
+            <p className="mt-3 max-w-2xl text-lg text-encre-doux">
+              Pas de faux avis, pas d&apos;avis achetés, pas de tri des clients. Tous vos clients reçoivent la même
+              demande. Votre note monte grâce à de vrais avis, durablement, sans risque pour votre fiche.
+            </p>
           </div>
         </div>
-        <p className="mt-8 text-lg">
-          Un doute ?{" "}
-          <a href="#estimation" className="font-semibold text-ardoise underline decoration-safran decoration-2 underline-offset-4">
-            Envoyez-nous une photo, on vous répond.
-          </a>
-        </p>
       </div>
     </section>
   );
@@ -141,143 +155,55 @@ export function Objets() {
 
 /* ───────────── Pour qui ───────────── */
 
-const situations = [
-  { titre: "Grand tri", texte: "Placards, grenier, garage : vous triez, nous vendons ce qui a de la valeur." },
-  { titre: "Déménagement", texte: "Tout ne rentrera pas dans le nouveau logement. Ce qui part vous rapporte." },
-  { titre: "Succession", texte: "Les objets d'un proche à vendre, avec respect et discrétion." },
-];
-
 export function PourQui() {
   return (
-    <section id="pour-qui" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-28">
-      <Titre sur="Pour qui" titre="Pour les moments où il faut faire de la place" />
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {situations.map((s) => (
-          <div key={s.titre} className="rounded-2xl border border-nuit/10 border-t-4 border-t-safran bg-white p-7 shadow-sm">
-            <h3 className="font-serif text-2xl font-semibold text-ardoise">{s.titre}</h3>
-            <p className="mt-3 text-gris">{s.texte}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-/* ───────────── Tarifs ───────────── */
-
-export function Tarifs() {
-  const t = site.tarifs;
-  const lignes: { titre: string; valeur: React.ReactNode; note?: React.ReactNode }[] = [
-    {
-      titre: "Estimation à domicile",
-      valeur: t.estimation ?? <Todo label="gratuite ou frais de déplacement" />,
-    },
-    {
-      titre: "Commission sur les ventes",
-      valeur: t.commissionPct ? `${t.commissionPct} % du prix de vente` : <Todo label="% de commission" />,
-      note: "Rien à payer si rien ne se vend.",
-    },
-    {
-      titre: "Valeur minimum par objet",
-      valeur: t.valeurMinimum ? `${t.valeurMinimum} €` : <Todo label="montant en €" />,
-      note: "En dessous, possibilité de vente en lot.",
-    },
-    {
-      titre: "Objets invendus",
-      valeur: t.semainesInvendu ? `Après ${t.semainesInvendu} semaines` : <Todo label="nombre de semaines" />,
-      note: "Ils restent simplement chez vous, ou sont retirés de la vente selon votre choix.",
-    },
-  ];
-
-  return (
-    <section id="tarifs" className="bg-ardoise-clair">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 md:py-28 lg:grid-cols-[1fr_1.3fr]">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-safran-fonce">Tarifs</p>
-          <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-nuit sm:text-[2.6rem]">
-            Vous ne payez que si ça se vend
-          </h2>
-          <p className="mt-4 text-lg text-gris">
-            Pas de frais cachés, pas d&apos;avance. Tout est écrit noir sur blanc dans le mandat de vente.
-          </p>
+    <section className="bg-section">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+        <div className="max-w-2xl">
+          <Eyebrow>Pour qui</Eyebrow>
+          <h2 className="mt-3 text-3xl font-bold text-encre sm:text-4xl">Pensé pour les commerces de proximité</h2>
         </div>
-        <dl className="divide-y divide-nuit/10 rounded-2xl border border-nuit/10 bg-white shadow-sm">
-          {lignes.map((l) => (
-            <div key={l.titre} className="grid gap-1 px-6 py-5 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6">
-              <dt>
-                <span className="font-semibold text-nuit">{l.titre}</span>
-                {l.note && <span className="mt-0.5 block text-[0.95rem] text-gris">{l.note}</span>}
-              </dt>
-              <dd className="font-serif text-xl font-semibold text-ardoise sm:text-right">{l.valeur}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    </section>
-  );
-}
-
-/* ───────────── Zone d'intervention ───────────── */
-
-export function Zone() {
-  return (
-    <section id="zone" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-24">
-      <div className="grid gap-10 rounded-3xl border border-nuit/10 bg-white p-8 shadow-sm md:grid-cols-[1fr_1.4fr] md:p-12">
-        <Titre sur="Zone d'intervention" titre="Grasse et alentours" intro="Nous nous déplaçons chez vous dans les communes suivantes." />
-        <div>
-          <ul className="flex flex-wrap gap-2.5">
-            {site.communes.map((c) => (
-              <li key={c}>
-                <Link
-                  href={`/depot-vente/${slugify(c)}`}
-                  className="inline-block rounded-full border border-ardoise/25 bg-ardoise-clair/40 px-4 py-2 font-medium text-nuit transition hover:bg-ardoise-clair"
-                >
-                  {c}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <a
-                href="#estimation"
-                className="inline-block rounded-full border border-dashed border-ardoise/60 px-4 py-2 font-medium text-ardoise transition hover:bg-ardoise-clair/40"
-              >
-                Autre commune ?
-              </a>
+        <ul className="mt-8 flex flex-wrap gap-2.5">
+          {pourQui.map((p) => (
+            <li
+              key={p}
+              className="rounded-full border border-trait bg-blanc px-4 py-2 font-medium text-encre shadow-sm"
+            >
+              {p}
             </li>
-          </ul>
-          {!site.communesValidees && (
-            <p className="mt-4">
-              <Todo label="valider la liste des communes" />
-            </p>
-          )}
-          <p className="mt-5 text-gris">Votre commune n&apos;est pas dans la liste ? Demandez quand même, on regarde ensemble.</p>
-        </div>
+          ))}
+        </ul>
+        <p className="mt-6 font-medium text-encre-doux">Grasse et Pays de Grasse, on se déplace chez vous.</p>
       </div>
     </section>
   );
 }
 
-/* ───────────── Questions fréquentes ───────────── */
+/* ───────────── Questions ───────────── */
 
 export function Questions() {
   const faq = getFaq();
   return (
-    <section id="questions" className="bg-sable-2/70">
-      <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 md:py-28">
-        <Titre sur="Questions fréquentes" titre="Vos questions, nos réponses" />
-        <div className="mt-10 space-y-3">
-          {faq.map((f) => (
-            <details key={f.q} className="group rounded-2xl bg-white px-6 py-1 shadow-sm open:pb-5">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-lg font-semibold text-nuit [&::-webkit-details-marker]:hidden">
-                {f.q}
-                <span aria-hidden className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-sable-2 text-xl text-ardoise transition group-open:rotate-45">
-                  +
-                </span>
-              </summary>
-              <p className="text-gris">{f.a}</p>
-            </details>
-          ))}
-        </div>
+    <section id="questions" className="mx-auto max-w-3xl px-4 py-16 sm:px-6 md:py-24">
+      <div className="max-w-2xl">
+        <Eyebrow>Questions fréquentes</Eyebrow>
+        <h2 className="mt-3 text-3xl font-bold text-encre sm:text-4xl">Vos questions, nos réponses</h2>
+      </div>
+      <div className="mt-8 space-y-3">
+        {faq.map((f) => (
+          <details key={f.q} className="group rounded-card border border-trait bg-blanc px-6 py-1 shadow-sm open:pb-5">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-lg font-semibold text-encre [&::-webkit-details-marker]:hidden">
+              {f.q}
+              <span
+                aria-hidden
+                className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-section text-xl text-bleu transition group-open:rotate-45"
+              >
+                +
+              </span>
+            </summary>
+            <p className="text-encre-doux">{f.a}</p>
+          </details>
+        ))}
       </div>
     </section>
   );
