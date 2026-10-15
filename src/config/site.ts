@@ -23,6 +23,25 @@ export const site = {
   },
 };
 
+/** Formulation unique de la plaque, réutilisée partout (offre, inclus, FAQ). */
+const PLAQUE_DESCRIPTION =
+  "plaque NFC + QR code prête à l'emploi, configurée par nos soins avec le lien d'avis de votre fiche Google";
+
+/** Offre commerciale (section « L'offre »). */
+export const offre = {
+  /** Prix de l'abonnement mensuel, en euros. */
+  prixMensuel: 49,
+  /** Prix de la plaque seule (paiement unique), en euros. */
+  plaquePrix: 29,
+  /** Description courte de la plaque, réutilisable. */
+  plaqueDescription: PLAQUE_DESCRIPTION,
+  /** Texte complet de la carte « Juste la plaque ? ». */
+  plaqueCarte:
+    "Prête à l'emploi : configurée par nos soins avec le lien d'avis de votre fiche Google, vous n'avez qu'à la poser. Grasse et alentours.",
+  /** Bandeau d'installation offerte (carte principale). */
+  installation: `Installation offerte (plaque d'une valeur de 29 €) : ${PLAQUE_DESCRIPTION}.`,
+};
+
 /** Secteurs d'activité (liste du formulaire d'audit). */
 export const activites = [
   "Restaurant",
@@ -55,7 +74,7 @@ export function getFaq(): Faq[] {
   return [
     {
       q: "Combien ça coûte ?",
-      a: "Le tarif dépend de votre activité et de votre volume de clients. On vous le présente après l'audit gratuit, sans engagement.",
+      a: `${offre.prixMensuel} € par mois, sans engagement. L'installation est offerte : ${offre.plaqueDescription}.`,
     },
     {
       q: "Est-ce que c'est légal ?",

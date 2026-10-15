@@ -1,4 +1,6 @@
-import { getFaq, pourQui } from "@/config/site";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import { getFaq, pourQui, offre } from "@/config/site";
 import { Check } from "./Check";
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -101,7 +103,7 @@ const inclus = [
   "Demande d'avis par SMS ou QR code à tous vos clients",
   "Réponses rédigées pour chaque avis, validées par vous en un clic",
   "Alerte immédiate en cas d'avis négatif",
-  "QR code imprimé pour votre comptoir",
+  "Plaque NFC + QR code prête à l'emploi, configurée par nos soins avec le lien d'avis de votre fiche Google",
   "Rapport mensuel sur votre note et vos avis",
   "Un interlocuteur local, à Grasse, qui se déplace",
 ];
@@ -122,6 +124,73 @@ export function Inclus() {
             </li>
           ))}
         </ul>
+      </div>
+    </section>
+  );
+}
+
+/* ───────────── L'offre ───────────── */
+
+const offreInclus = [
+  "Audit gratuit de votre fiche",
+  "Plaque NFC + QR code offerts",
+  "Réponse à chacun de vos avis, validée par vous",
+  "Alerte immédiate en cas d'avis négatif",
+  "Rapport mensuel face à vos concurrents",
+  "Un interlocuteur à Grasse qui se déplace",
+];
+
+export function Offre() {
+  return (
+    <section id="offre" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+      <div className="max-w-2xl">
+        <Eyebrow>L&apos;offre</Eyebrow>
+        <h2 className="mt-3 text-3xl font-bold text-encre sm:text-4xl">Une offre simple, sans engagement</h2>
+      </div>
+      <div className="mt-10 grid gap-5 lg:grid-cols-[1.6fr_1fr] lg:items-start">
+        {/* Carte principale mise en avant (bordure or) */}
+        <div className="rounded-card border-2 border-or bg-blanc p-6 shadow-douce sm:p-8">
+          <h3 className="text-2xl font-bold text-encre">Tout compris, sans engagement</h3>
+          <div className="mt-4 flex items-baseline gap-2">
+            <span className="font-display text-5xl font-bold text-encre">{offre.prixMensuel} €</span>
+            <span className="text-lg text-encre-doux">/ mois</span>
+          </div>
+          <p className="mt-1 text-encre-doux">Sans engagement, résiliable à tout moment.</p>
+
+          <p className="mt-5 rounded-xl bg-or/10 px-4 py-3 text-sm font-medium text-encre">{offre.installation}</p>
+
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            {offreInclus.map((i) => (
+              <li key={i} className="flex items-start gap-2.5">
+                <Check className="mt-0.5 h-5 w-5 shrink-0 text-or" />
+                <span className="text-encre">{i}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="#audit"
+            className="mt-7 inline-block rounded-full bg-or px-7 py-4 font-semibold text-encre shadow-douce transition hover:brightness-105"
+          >
+            Recevoir mon audit gratuit
+          </a>
+        </div>
+
+        {/* Carte secondaire discrète : la plaque seule */}
+        <div className="rounded-card border border-trait bg-blanc p-6 shadow-sm sm:p-7">
+          <h3 className="text-xl font-bold text-encre">Juste la plaque&nbsp;?</h3>
+          <div className="mt-3 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+            <span className="font-display text-3xl font-bold text-encre">{offre.plaquePrix} €</span>
+            <span className="text-sm text-encre-doux">paiement unique, sans abonnement</span>
+          </div>
+          <p className="mt-3 text-encre-doux">{offre.plaqueCarte}</p>
+          <a
+            href="/?demande=plaque#audit"
+            className="mt-6 inline-block rounded-full border border-encre/25 px-6 py-3 font-medium text-encre transition hover:bg-encre/5"
+          >
+            Commander ma plaque
+          </a>
+        </div>
       </div>
     </section>
   );
@@ -174,6 +243,46 @@ export function PourQui() {
           ))}
         </ul>
         <p className="mt-6 font-medium text-encre-doux">Grasse et Pays de Grasse, on se déplace chez vous.</p>
+      </div>
+    </section>
+  );
+}
+
+/* ───────────── Qui suis-je ───────────── */
+
+export function QuiSuisJe() {
+  const photo = existsSync(join(process.cwd(), "public", "thomas.jpg"));
+  return (
+    <section className="bg-section">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+        <div className="grid items-center gap-8 md:grid-cols-[auto_1fr] md:gap-12">
+          {photo ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src="/thomas.jpg"
+              alt="Thomas, fondateur de Topsail"
+              width={160}
+              height={160}
+              className="h-40 w-40 shrink-0 rounded-full object-cover shadow-douce"
+            />
+          ) : (
+            <div
+              aria-hidden
+              className="grid h-40 w-40 shrink-0 place-items-center rounded-full bg-bleu font-display text-6xl font-bold text-creme shadow-douce"
+            >
+              T
+            </div>
+          )}
+          <div className="max-w-2xl">
+            <Eyebrow>Qui suis-je</Eyebrow>
+            <h2 className="mt-3 text-3xl font-bold text-encre sm:text-4xl">Un interlocuteur local, pas une plateforme</h2>
+            <p className="mt-4 text-lg text-encre-doux">
+              Je m&apos;appelle Thomas, je suis de Grasse. J&apos;aide les commerces du coin à être mieux notés sur
+              Google, sans qu&apos;ils aient à y passer du temps. Je me déplace, je vous explique tout simplement, et
+              vous gardez toujours la main sur ce qui est publié en votre nom.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
