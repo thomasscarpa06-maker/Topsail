@@ -19,7 +19,7 @@ export default function MentionsLegales() {
         <p>
           {m.editeur ?? <Todo label="nom et prénom" />}, entrepreneur individuel, exerçant sous le nom commercial Topsail.
           <br />
-          SIRET : {m.siret ?? <Todo label="SIRET (après immatriculation)" />}
+          SIRET : {m.siret ?? "Immatriculation en cours"}
           <br />
           Adresse : {m.adresse ?? <Todo label="adresse" />}
           <br />
