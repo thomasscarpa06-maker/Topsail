@@ -20,7 +20,7 @@ export const site = {
     // (les pages légales affichent alors « Immatriculation en cours »).
     siret: null as string | null,
     // Adresse de l'entreprise.
-    adresse: "24 avenue Sidi Brahim" as string | null,
+    adresse: "24 avenue Sidi Brahim, 06130 GRASSE" as string | null,
   },
 };
 
