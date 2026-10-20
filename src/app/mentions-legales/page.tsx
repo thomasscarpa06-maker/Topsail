@@ -6,7 +6,7 @@ import { Todo } from "@/components/Todo";
 export const metadata: Metadata = {
   title: "Mentions légales — Topsail",
   description:
-    "Mentions légales de Topsail, dépôt-vente à domicile dans le Pays de Grasse : éditeur, activité réglementée et hébergeur du site.",
+    "Mentions légales de Topsail, gestion de la réputation Google des commerces du Pays de Grasse : éditeur et hébergeur du site.",
   alternates: { canonical: "/mentions-legales" },
 };
 
@@ -32,15 +32,6 @@ export default function MentionsLegales() {
           )}
         </p>
         <p className="mt-3">Directeur de la publication : {m.editeur ?? <Todo label="nom et prénom" />}</p>
-      </section>
-
-      <section>
-        <h2>Activité réglementée</h2>
-        <p>
-          Revendeur d&apos;objets mobiliers : déclaration auprès de la préfecture des Alpes-Maritimes,{" "}
-          {m.declarationRevendeur ? `n° ${m.declarationRevendeur}` : <Todo label="référence de la déclaration" />}. Un
-          registre des objets mobiliers est tenu conformément à l'article 321-7 du Code pénal.
-        </p>
       </section>
 
       <section>
