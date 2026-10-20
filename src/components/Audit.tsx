@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { site, activites } from "@/config/site";
 
 type Etat = "idle" | "envoi" | "ok" | "erreur";
@@ -12,6 +12,18 @@ const labelCls = "block font-semibold text-encre";
 export function Audit() {
   const [etat, setEtat] = useState<Etat>("idle");
   const [message, setMessage] = useState("");
+  const [demande, setDemande] = useState("Audit gratuit");
+
+  // Pré-sélection via ?demande=plaque (lien « Commander ma plaque »).
+  useEffect(() => {
+    try {
+      if (new URLSearchParams(window.location.search).get("demande") === "plaque") {
+        setDemande("Plaque NFC seule");
+      }
+    } catch {
+      /* window indisponible : on garde la valeur par défaut */
+    }
+  }, []);
 
   async function envoyer(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -63,6 +75,20 @@ export function Audit() {
               <div aria-hidden className="absolute -left-[9999px]">
                 <label htmlFor="site-web">Ne pas remplir</label>
                 <input id="site-web" name="website" tabIndex={-1} autoComplete="off" />
+              </div>
+
+              <div className="sm:col-span-2">
+                <label htmlFor="demande" className={labelCls}>Votre demande</label>
+                <select
+                  id="demande"
+                  name="demande"
+                  value={demande}
+                  onChange={(e) => setDemande(e.target.value)}
+                  className={champCls}
+                >
+                  <option>Audit gratuit</option>
+                  <option>Plaque NFC seule</option>
+                </select>
               </div>
 
               <div>

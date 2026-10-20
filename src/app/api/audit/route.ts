@@ -37,7 +37,11 @@ export async function POST(req: Request) {
     fiche: texte(fd, "fiche", 500),
     email: texte(fd, "email"),
     telephone: texte(fd, "telephone", 40),
+    demande: texte(fd, "demande", 40),
   };
+
+  const plaque = champs.demande === "Plaque NFC seule";
+  const typeDemande = plaque ? "Plaque" : "Audit";
 
   if (!champs.nom || !champs.commerce || !champs.activite || !champs.ville || !champs.email || !champs.telephone) {
     return NextResponse.json({ error: "Merci de remplir tous les champs." }, { status: 400 });
@@ -64,9 +68,10 @@ export async function POST(req: Request) {
     ["E-mail", champs.email],
     ["Téléphone", champs.telephone],
   ];
+  lignes.unshift(["Demande", plaque ? "Plaque NFC seule" : "Audit gratuit"]);
 
   const html = `
-    <h2 style="font-family:Arial,sans-serif;color:#0B1220">Nouvelle demande d'audit</h2>
+    <h2 style="font-family:Arial,sans-serif;color:#0B1220">Nouvelle demande (${typeDemande})</h2>
     <table cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:15px">
       ${lignes
         .map(([k, v]) => `<tr><td style="color:#4b5563">${k}</td><td><strong>${esc(v)}</strong></td></tr>`)
@@ -80,7 +85,7 @@ export async function POST(req: Request) {
       from: process.env.CONTACT_FROM || "Topsail <onboarding@resend.dev>",
       to: [process.env.CONTACT_TO || site.email],
       reply_to: champs.email,
-      subject: `Audit – ${champs.commerce} (${champs.ville})`,
+      subject: `${typeDemande} – ${champs.commerce} (${champs.ville})`,
       html,
     }),
   });

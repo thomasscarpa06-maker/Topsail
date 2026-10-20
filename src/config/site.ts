@@ -14,13 +14,33 @@ export const site = {
   phone: null as string | null,
 
   mentionsLegales: {
-    // TODO [À DÉFINIR] : nom et prénom du porteur de la micro-entreprise
-    editeur: null as string | null,
-    // TODO [À DÉFINIR après immatriculation]
+    // Nom et prénom du porteur de la micro-entreprise (éditeur + directeur de publication).
+    editeur: "Thomas Scarpa" as string | null,
+    // SIRET : laisser null tant que l'immatriculation n'est pas finalisée
+    // (les pages légales affichent alors « Immatriculation en cours »).
     siret: null as string | null,
-    // TODO [À DÉFINIR] : adresse de l'entreprise
-    adresse: null as string | null,
+    // Adresse de l'entreprise.
+    adresse: "24 avenue Sidi Brahim, 06130 GRASSE" as string | null,
   },
+};
+
+/** Formulation unique de la plaque, réutilisée partout (offre, inclus, FAQ). */
+const PLAQUE_DESCRIPTION =
+  "plaque NFC + QR code prête à l'emploi, configurée par nos soins avec le lien d'avis de votre fiche Google";
+
+/** Offre commerciale (section « L'offre »). */
+export const offre = {
+  /** Prix de l'abonnement mensuel, en euros. */
+  prixMensuel: 49,
+  /** Prix de la plaque seule (paiement unique), en euros. */
+  plaquePrix: 29,
+  /** Description courte de la plaque, réutilisable. */
+  plaqueDescription: PLAQUE_DESCRIPTION,
+  /** Texte complet de la carte « Juste la plaque ? ». */
+  plaqueCarte:
+    "Prête à l'emploi : configurée par nos soins avec le lien d'avis de votre fiche Google, vous n'avez qu'à la poser. Grasse et alentours.",
+  /** Bandeau d'installation offerte (carte principale). */
+  installation: `Installation offerte (plaque d'une valeur de 29 €) : ${PLAQUE_DESCRIPTION}.`,
 };
 
 /** Secteurs d'activité (liste du formulaire d'audit). */
@@ -55,7 +75,7 @@ export function getFaq(): Faq[] {
   return [
     {
       q: "Combien ça coûte ?",
-      a: "Le tarif dépend de votre activité et de votre volume de clients. On vous le présente après l'audit gratuit, sans engagement.",
+      a: `${offre.prixMensuel} € par mois, sans engagement. L'installation est offerte : ${offre.plaqueDescription}.`,
     },
     {
       q: "Est-ce que c'est légal ?",

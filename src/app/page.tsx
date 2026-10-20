@@ -1,7 +1,7 @@
-import { site, getFaq } from "@/config/site";
+import { site, getFaq, offre } from "@/config/site";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { Probleme, CommentCaMarche, Inclus, Conformite, PourQui, Questions } from "@/components/Sections";
+import { Probleme, CommentCaMarche, Inclus, Offre, Conformite, PourQui, QuiSuisJe, Questions } from "@/components/Sections";
 import { Audit } from "@/components/Audit";
 import { Footer } from "@/components/Footer";
 
@@ -20,6 +20,26 @@ function JsonLd() {
     image: `${site.url}/opengraph-image`,
     address: { "@type": "PostalAddress", addressLocality: "Grasse", postalCode: "06130", addressCountry: "FR" },
     areaServed: AREA.map((c) => ({ "@type": "City", name: c })),
+    makesOffer: [
+      {
+        "@type": "Offer",
+        name: "Gestion des avis Google — abonnement",
+        priceCurrency: "EUR",
+        price: String(offre.prixMensuel),
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          priceCurrency: "EUR",
+          price: String(offre.prixMensuel),
+          referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "MON" },
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "Plaque NFC + QR code (paiement unique)",
+        priceCurrency: "EUR",
+        price: String(offre.plaquePrix),
+      },
+    ],
   };
 
   const website = {
@@ -59,8 +79,10 @@ export default function Home() {
         <Probleme />
         <CommentCaMarche />
         <Inclus />
+        <Offre />
         <Conformite />
         <PourQui />
+        <QuiSuisJe />
         <Questions />
         <Audit />
       </main>
